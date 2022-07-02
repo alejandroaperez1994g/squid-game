@@ -1,0 +1,32 @@
+.navbar__container {
+  display: flex;
+  justify-content: space-between;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  align-items: center;
+  gap: 4rem;
+  width: 90%;
+}
+
+.navbar__item {
+  color: white;
+  text-decoration: none;
+}
+.navbar__item:hover {
+  color: #00a0c6;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.navbar__logo {
+  height: 2rem;
+}
+
+.navbar__loginButton {
+  padding: 0.6rem 1rem;
+  font-family: "Sharp";
+  border: 2px solid white;
+  color: white;
+  background-color: transparent;
+  font-size: 1.3rem;
+}
