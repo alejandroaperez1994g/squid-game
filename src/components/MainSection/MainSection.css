@@ -1,0 +1,34 @@
+.main__section {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 85vh;
+  width: 90%;
+
+  background-image: url("../../assets/img/squid-store.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 34rem;
+}
+
+.main__section_container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem;
+}
+
+.main__section_top_img {
+  height: 15rem;
+}
+
+.main__section_top_text {
+  color: white;
+  width: 20%;
+}
+
+hr {
+  height: 3px;
+  background-color: #e83b7d;
+  border: none;
+}

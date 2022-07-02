@@ -1,12 +1,11 @@
 import "./NavBar.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBars } from "@fortawesome/free-solid-svg-icons";
+import * as icons from "@fortawesome/free-solid-svg-icons";
 
 const Navbar = () => {
   return (
     <div className="navbar__container">
-      <FontAwesomeIcon icon="fa-solid fa-bars-sort" />
-      <FontAwesomeIcon icon={faBars} color="white" />
+      <FontAwesomeIcon icon={icons.faBars} color="white" />
 
       <a className="navbar__item sharp_font " href="http:/">
         Contact
