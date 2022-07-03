@@ -3,7 +3,6 @@ import Product from "../Product/Product";
 import { info } from "../../assets/js/info";
 
 const Catalog = () => {
-  console.log(info[0].catalog);
   return (
     <div className="catalog__container">
       <img

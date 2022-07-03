@@ -1,0 +1,25 @@
+.series__container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 75vh;
+  width: 90%;
+  padding: 2rem;
+  background-image: url("../../assets/img/background-series.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.series__image {
+  height: 25rem;
+  border-radius: 10px;
+}
+.series__title {
+  margin-bottom: 2rem;
+  margin-top: 15rem;
+}
+
+.alice-carousel__wrapper {
+  width: 50%;
+}

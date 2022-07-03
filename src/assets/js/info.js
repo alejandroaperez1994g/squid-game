@@ -55,5 +55,34 @@ export const info = [
         discount: "€64",
       },
     ],
+    series: [
+      {
+        url: "ep1.jpg",
+      },
+      {
+        url: "ep2.jpg",
+      },
+      {
+        url: "ep3.jpg",
+      },
+      {
+        url: "ep4.jpg",
+      },
+      {
+        url: "ep5.jpg",
+      },
+      {
+        url: "ep6.jpg",
+      },
+      {
+        url: "ep7.jpg",
+      },
+      {
+        url: "ep8.jpg",
+      },
+      {
+        url: "ep9.jpg",
+      },
+    ],
   },
 ];
