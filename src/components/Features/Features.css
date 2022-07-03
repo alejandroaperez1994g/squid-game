@@ -1,0 +1,14 @@
+.features__section {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: 35vh;
+  /* width: 90%; */
+  padding: 0 5rem;
+  gap: 1rem;
+  background: linear-gradient(
+    83.88deg,
+    #1b1834 25%,
+    rgba(255, 255, 255, 0) 100%
+  );
+}
