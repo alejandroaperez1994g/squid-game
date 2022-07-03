@@ -4,6 +4,7 @@ import MainSection from "./components/MainSection/MainSection";
 import Features from "./components/Features/Features";
 import Catalog from "./components/Catalog/Catalog";
 import Series from "./components/Series/Series";
+import BottomSection from "./components/BottomSection/BottomSection";
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
       <Features />
       <Catalog />
       <Series />
+      <BottomSection />
     </div>
   );
 }
