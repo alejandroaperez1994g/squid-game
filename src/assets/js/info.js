@@ -17,5 +17,43 @@ export const info = [
         icon: "faStar",
       },
     ],
+    catalog: [
+      {
+        title: "Front Man Mask Squid Game",
+        image: "dark-mask.png",
+        price: "€70",
+        discount: "€64",
+      },
+      {
+        title: "The Squid Game Guard Mask",
+        image: "guard-mask.png",
+        price: "€60",
+        discount: "€44",
+      },
+      {
+        title: "The Squid Game 성기훈 Doll",
+        image: "geosyrup.png",
+        price: "€65",
+        discount: "€45",
+      },
+      {
+        title: "The Squid Game Guard Doll",
+        image: "guard-doll.png",
+        price: "€85",
+        discount: "€55",
+      },
+      {
+        title: "The Squid Game 티셔츠 PLAYER T-Shirt",
+        image: "t-shirt.png",
+        price: "€90",
+        discount: "€75",
+      },
+      {
+        title: "Squid Game Player 067 Kang Sae-Byeok",
+        image: "saepost.png",
+        price: "€70",
+        discount: "€64",
+      },
+    ],
   },
 ];

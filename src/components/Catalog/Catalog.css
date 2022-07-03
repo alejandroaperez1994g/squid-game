@@ -1,0 +1,23 @@
+.catalog__container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  height: 50vh;
+  width: 90vw;
+  margin: 1.5rem 0;
+}
+
+.catalog__title {
+  height: 2.5rem;
+  margin-bottom: 1.4rem;
+}
+
+.catalog__products {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  width: 100%;
+  margin-top: 1rem;
+}
