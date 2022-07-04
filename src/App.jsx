@@ -1,4 +1,5 @@
 import "./App.css";
+import { useState } from "react";
 import NavBar from "./components/NavBar/NavBar";
 import MainSection from "./components/MainSection/MainSection";
 import Features from "./components/Features/Features";
@@ -8,12 +9,14 @@ import BottomSection from "./components/BottomSection/BottomSection";
 import Footer from "./components/Footer/Footer";
 
 function App() {
+  const [shoppingCart, setShoppingCart] = useState([]);
+
   return (
     <div className="App">
-      <NavBar />
+      <NavBar cart={shoppingCart} setCart={setShoppingCart} />
       <MainSection />
       <Features />
-      <Catalog />
+      <Catalog cart={shoppingCart} setCart={setShoppingCart} />
       <Series />
       <BottomSection />
       <Footer />
