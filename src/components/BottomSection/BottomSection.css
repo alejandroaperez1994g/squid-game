@@ -1,18 +1,18 @@
 .bottom__section_container {
   display: flex;
   flex-direction: row;
-  padding: 2.5rem;
   width: 90%;
   height: 60vh;
   color: white;
   background: linear-gradient(143.36deg, #c1a8e4 0%, #8552c9 75%);
-  border: 2px solid white;
 }
 
 .bottom__section_left {
   display: flex;
   flex-direction: column;
   flex: 1;
+  margin-left: 1.5rem;
+  margin-top: 1.5rem;
 }
 
 .bottom__section_right {
@@ -21,6 +21,7 @@
   background-position: center;
   background-repeat: no-repeat;
   flex: 1;
+  margin: 1.5rem;
 }
 
 .bottom__section_image {

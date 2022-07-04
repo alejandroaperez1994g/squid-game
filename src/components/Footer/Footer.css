@@ -1,0 +1,36 @@
+.footer__section {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 90%;
+  height: 10vh;
+  color: white;
+}
+
+.footer__section_text {
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+.link:hover {
+  color: #df3978;
+  cursor: pointer;
+}
+
+.footer__section_button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: -moz-fit-content;
+  width: fit-content;
+  color: white;
+  font-size: 0.9rem;
+  padding: 0.5em 1.5em;
+  border-radius: 10px;
+  background: linear-gradient(145deg, #d13571, #f83f86);
+  border: none;
+}
+
+.footer__section_button:hover {
+  cursor: pointer;
+}

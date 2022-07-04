@@ -8,7 +8,6 @@ const BottomSection = () => {
           className="bottom__section_image"
           src={require("../../assets/img/logo.png")}
           alt=""
-          srcset=""
         />
         <h2 className="bottom__section_title">Ready For The Next Game!</h2>
         <p className="bottom__section_text">

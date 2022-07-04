@@ -5,6 +5,7 @@ import Features from "./components/Features/Features";
 import Catalog from "./components/Catalog/Catalog";
 import Series from "./components/Series/Series";
 import BottomSection from "./components/BottomSection/BottomSection";
+import Footer from "./components/Footer/Footer";
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
       <Catalog />
       <Series />
       <BottomSection />
+      <Footer />
     </div>
   );
 }
