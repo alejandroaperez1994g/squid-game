@@ -1,0 +1,17 @@
+.item__container {
+  display: flex;
+}
+
+.item__image {
+  flex: 1;
+  height: 5rem;
+}
+.item__info {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.info {
+  margin: 0;
+}
