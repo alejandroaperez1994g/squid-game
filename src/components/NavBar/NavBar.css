@@ -30,3 +30,7 @@
   background-color: transparent;
   font-size: 1.3rem;
 }
+
+.navbar__loginButton:hover {
+  cursor: pointer;
+}

@@ -1,11 +1,50 @@
 import "./NavBar.css";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import * as icons from "@fortawesome/free-solid-svg-icons";
+import { useState } from "react";
+import Badge from "@mui/material/Badge";
+import { styled } from "@mui/material/styles";
+import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
+import CartItem from "../CartItem/CartItem";
 
-const Navbar = () => {
+import IconButton from "@mui/material/IconButton";
+import MenuItem from "@mui/material/MenuItem";
+import Menu from "@mui/material/Menu";
+
+const StyledBadge = styled(Badge)(({ theme }) => ({
+  "& .MuiBadge-badge": {
+    right: -2,
+    top: 3,
+    border: `2px solid ${theme.palette.background.paper}`,
+    padding: "0 4px",
+  },
+}));
+
+const Navbar = ({ cart, setCart }) => {
+  const [anchorEl, setAnchorEl] = useState(null);
+
+  const handleMenu = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+
+  const handleTest = () => {
+    setCart([...cart, 1]);
+  };
+
+  const Total = () => {
+    return (
+      <div className="total__wrapper">
+        <p>Total</p>
+        <p>$45</p>
+      </div>
+    );
+  };
+
   return (
     <div className="navbar__container">
-      <FontAwesomeIcon icon={icons.faBars} color="white" />
+      <button className="navbar__loginButton">Login</button>
 
       <a className="navbar__item sharp_font " href="http:/">
         Contact
@@ -32,7 +71,51 @@ const Navbar = () => {
       <a className="navbar__item sharp_font" href="http:/">
         Series
       </a>
-      <button className="navbar__loginButton">Login</button>
+      <div>
+        <IconButton
+          size="large"
+          aria-label="account of current user"
+          aria-controls="menu-appbar"
+          aria-haspopup="true"
+          onClick={handleMenu}
+          color="inherit"
+        >
+          <StyledBadge badgeContent={cart.length} color="primary">
+            <ShoppingCartIcon style={{ color: "white" }} />
+          </StyledBadge>
+        </IconButton>
+        <Menu
+          id="menu-appbar"
+          anchorEl={anchorEl}
+          anchorOrigin={{
+            vertical: "top",
+            horizontal: "right",
+          }}
+          keepMounted
+          transformOrigin={{
+            vertical: "top",
+            horizontal: "right",
+          }}
+          open={Boolean(anchorEl)}
+          onClose={handleClose}
+        >
+          <MenuItem>Shooping Cart</MenuItem>
+          {cart.map((item, index) => {
+            return (
+              <MenuItem key={index}>
+                <CartItem
+                  name={item.name}
+                  img={item.img}
+                  price={item.price}
+                  amount={item.amount}
+                />
+              </MenuItem>
+            );
+          })}
+          <Total />
+          <button>Checkout</button>{" "}
+        </Menu>
+      </div>
     </div>
   );
 };
