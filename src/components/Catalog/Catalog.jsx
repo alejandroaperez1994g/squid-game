@@ -2,7 +2,7 @@ import "./Catalog.css";
 import Product from "../Product/Product";
 import { info } from "../../assets/js/info";
 
-const Catalog = () => {
+const Catalog = ({ cart, setCart }) => {
   return (
     <div className="catalog__container">
       <img
@@ -20,6 +20,8 @@ const Catalog = () => {
               image={item.image}
               price={item.price}
               discount={item.discount}
+              cart={cart}
+              setCart={setCart}
             />
           );
         })}

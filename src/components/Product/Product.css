@@ -88,3 +88,7 @@
   cursor: pointer;
   color: white;
 }
+
+.hidden {
+  display: none;
+}

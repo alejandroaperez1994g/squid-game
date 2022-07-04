@@ -1,7 +1,12 @@
 import "./Product.css";
 import PropTypes from "prop-types";
 
-const Product = ({ title, image, price, discount }) => {
+const Product = ({ title, image, price, discount, cart, setCart }) => {
+  const handleAddToCart = (e) => {
+    e.target.classList.add("hidden");
+    setCart([...cart, { name: title, img: image, price: price, amount: 1 }]);
+  };
+
   return (
     <div className="product__wrapper">
       <div className="product__image">
@@ -19,7 +24,9 @@ const Product = ({ title, image, price, discount }) => {
           <span className="prices__discount">€{discount}</span>
         </div>
         <span>|</span>
-        <button className="prices__button">Shop Now</button>
+        <button onClick={handleAddToCart} className="prices__button">
+          Shop Now
+        </button>
       </div>
     </div>
   );
