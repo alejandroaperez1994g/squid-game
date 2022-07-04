@@ -1,6 +1,7 @@
 import "./FeatureItem.css";
 import * as icons from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import PropTypes from "prop-types";
 
 const FeatureItem = ({ id, title, text, iconShape }) => {
   return (
@@ -12,6 +13,20 @@ const FeatureItem = ({ id, title, text, iconShape }) => {
       <p className="feature__item_text">{text}</p>
     </div>
   );
+};
+
+FeatureItem.propTypes = {
+  id: PropTypes.number.isRequired,
+  title: PropTypes.string.isRequired,
+  text: PropTypes.string.isRequired,
+  iconShape: PropTypes.string.isRequired,
+};
+
+FeatureItem.defaultProps = {
+  id: 0,
+  title: "",
+  text: "",
+  iconShape: "",
 };
 
 export default FeatureItem;
