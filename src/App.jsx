@@ -1,5 +1,5 @@
 import "./App.css";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import NavBar from "./components/NavBar/NavBar";
 import MainSection from "./components/MainSection/MainSection";
 import Features from "./components/Features/Features";
@@ -8,8 +8,14 @@ import Series from "./components/Series/Series";
 import BottomSection from "./components/BottomSection/BottomSection";
 import Footer from "./components/Footer/Footer";
 
+let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
 function App() {
-  const [shoppingCart, setShoppingCart] = useState([]);
+  const [shoppingCart, setShoppingCart] = useState(cart);
+
+  useEffect(() => {
+    localStorage.setItem("cart", JSON.stringify(shoppingCart));
+  }, [shoppingCart]);
 
   return (
     <div className="App">
