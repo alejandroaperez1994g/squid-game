@@ -29,10 +29,6 @@ const Navbar = ({ cart, setCart }) => {
     setAnchorEl(null);
   };
 
-  const handleTest = () => {
-    setCart([...cart, 1]);
-  };
-
   const Total = () => {
     return (
       <div className="total__wrapper">
