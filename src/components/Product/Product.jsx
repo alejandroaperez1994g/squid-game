@@ -1,11 +1,22 @@
-import "./Product.css";
+import { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 
-const Product = ({ title, image, price, discount, cart, setCart }) => {
+import "./Product.css";
+
+const Product = ({ id, title, image, price, discount, cart, setCart }) => {
+  const [added, setAdded] = useState(false);
+
   const handleAddToCart = (e) => {
-    e.target.classList.add("hidden");
-    setCart([...cart, { name: title, img: image, price: price, amount: 1 }]);
+    setAdded(true);
+    setCart([
+      ...cart,
+      { id: id, name: title, img: image, price: price, amount: 1 },
+    ]);
   };
+
+  useEffect(() => {
+    cart.find((item) => item.id === id) && setAdded(true);
+  }, [added, cart, id]);
 
   return (
     <div className="product__wrapper">
@@ -18,16 +29,20 @@ const Product = ({ title, image, price, discount, cart, setCart }) => {
         />
       </div>
       <p className="product__title">{title}</p>
-      <div className="product__bottom">
-        <div className="prices">
-          <span className="prices__old">€ {price}</span>
-          <span className="prices__discount">€{discount}</span>
+      {added ? (
+        <p className="product__added">Added to cart</p>
+      ) : (
+        <div className="product__bottom">
+          <div className="prices">
+            <span className="prices__old">€ {price}</span>
+            <span className="prices__discount">€{discount}</span>
+          </div>
+          <span>|</span>
+          <button onClick={handleAddToCart} className="prices__button">
+            Shop Now
+          </button>
         </div>
-        <span>|</span>
-        <button onClick={handleAddToCart} className="prices__button">
-          Shop Now
-        </button>
-      </div>
+      )}
     </div>
   );
 };
