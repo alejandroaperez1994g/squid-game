@@ -16,6 +16,7 @@ const Catalog = ({ cart, setCart }) => {
           return (
             <Product
               key={index}
+              id={index}
               title={item.title}
               image={item.image}
               price={item.price}

@@ -14,12 +14,7 @@ const CartItem = ({ name, price, img, amount }) => {
         <p className="item__info_title info">{name}</p>
         <p className="item__info_price info">€{price}</p>
         <div className="item__bottom">
-          <input
-            className="item__bottom_input"
-            type="number"
-            name=""
-            value={amount}
-          />
+          <p className="item__bottom_input">{amount}</p>
           <button className="item__bottom_button">Remove</button>
         </div>
         <hr />
