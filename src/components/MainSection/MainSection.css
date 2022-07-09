@@ -8,7 +8,7 @@
   background-image: url("../../assets/img/squid-store.png");
   background-position: center;
   background-repeat: no-repeat;
-  background-size: 34rem;
+  background-size: 40rem;
 }
 
 .main__section_container {
@@ -19,7 +19,7 @@
 }
 
 .main__section_top_img {
-  height: 15rem;
+  height: 19rem;
 }
 
 .main__section_top_text {
@@ -31,4 +31,76 @@ hr {
   height: 3px;
   background-color: #e83b7d;
   border: none;
+}
+
+.main__section_top_img_4 {
+  display: none;
+}
+
+@media screen and (max-width: 768px) {
+  .main__section {
+    background-size: 0rem;
+    height: 120vh;
+    justify-content: start;
+  }
+  .main__section_container {
+    flex-direction: column;
+  }
+  .main__section_top_img_4 {
+    display: block;
+  }
+  .main__section_top_text {
+    margin-top: 4rem;
+    font-size: 2rem;
+    width: 60%;
+    text-align: center;
+  }
+  .main__section_top_img_1 {
+    content: url("../../assets/img/squid-store.png");
+  }
+  .main__section_top_img_2 {
+    margin-left: -10rem;
+  }
+  .main__section_top_img_3 {
+    margin-right: -10rem;
+  }
+  .main__section_top_img_4 {
+    display: block;
+    margin-right: -10rem;
+  }
+  .main__section_top_img {
+    height: 10rem;
+  }
+}
+
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+  .main__section {
+    background-size: 0rem;
+    height: 110vh;
+  }
+  .main__section_container {
+    flex-direction: column;
+  }
+  .main__section_top_text {
+    margin-top: 4rem;
+    font-size: 2rem;
+    width: 60%;
+    text-align: center;
+  }
+  .main__section_top_img_1 {
+    content: url("../../assets/img/squid-store.png");
+  }
+  .main__section_top_img_2 {
+    margin-left: -10rem;
+  }
+  .main__section_top_img_3 {
+    margin-right: -10rem;
+  }
+  .main__section_top_img_4 {
+    display: block;
+    margin-right: -10rem;
+  }
+  .main__section_top_img {
+    height: 17rem;
+  }
 }

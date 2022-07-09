@@ -1,10 +1,10 @@
 .navbar__container {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-evenly;
   padding-top: 1rem;
   padding-bottom: 1rem;
   align-items: center;
-  gap: 4rem;
+  gap: 3rem;
   width: 90%;
 }
 
@@ -33,4 +33,27 @@
 
 .navbar__loginButton:hover {
   cursor: pointer;
+}
+
+.MuiList-root {
+  width: 20rem;
+}
+
+@media screen and (max-width: 768px) {
+  .navbar__container {
+    justify-content: space-between;
+  }
+  .navbar__item {
+    display: none;
+  }
+  .navbar__item_img {
+    display: block;
+  }
+}
+
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+  .navbar__container {
+    justify-content: center;
+    gap: 2rem;
+  }
 }

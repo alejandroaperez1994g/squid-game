@@ -51,7 +51,7 @@ const Navbar = ({ cart, setCart }) => {
       <a className="navbar__item sharp_font" href="http:/">
         Blog
       </a>
-      <a className="navbar__item sharp_font" href="http:/">
+      <a className="navbar__item sharp_font navbar__item_img" href="http:/">
         <img
           className="navbar__logo"
           src="https://www.pngmart.com/files/21/Squid-Game-Play-Card-Circle-Triangle-Sqaure-PNG.png"
@@ -100,10 +100,13 @@ const Navbar = ({ cart, setCart }) => {
             return (
               <MenuItem key={index}>
                 <CartItem
+                  id={item.id}
                   name={item.name}
                   img={item.img}
                   price={item.price}
                   amount={item.amount}
+                  cart={cart}
+                  setCart={setCart}
                 />
               </MenuItem>
             );

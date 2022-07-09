@@ -7,10 +7,10 @@ const FeatureItem = ({ id, title, text, iconShape }) => {
   return (
     <div className="feature__item">
       <button className="feature__item_button">
-        <FontAwesomeIcon icon={icons[iconShape]} />{" "}
+        <FontAwesomeIcon icon={icons[iconShape]} />
       </button>
-      <h3 className="feature__item_title">{title}</h3>
-      <p className="feature__item_text">{text}</p>
+      <h3 className="feature__item_title sharp_font">{title}</h3>
+      <p className="feature__item_text sharp_font">{text}</p>
     </div>
   );
 };

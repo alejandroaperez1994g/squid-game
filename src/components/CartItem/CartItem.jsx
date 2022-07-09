@@ -1,6 +1,11 @@
 import "./CartItem.css";
 
-const CartItem = ({ name, price, img, amount }) => {
+const CartItem = ({ id, name, price, img, amount, cart, setCart }) => {
+  const handleRemove = () => {
+    let newArray = cart.filter((item) => item.id !== id);
+    setCart(newArray);
+  };
+
   return (
     <div className="item__container">
       <div>
@@ -15,7 +20,9 @@ const CartItem = ({ name, price, img, amount }) => {
         <p className="item__info_price info">€{price}</p>
         <div className="item__bottom">
           <p className="item__bottom_input">{amount}</p>
-          <button className="item__bottom_button">Remove</button>
+          <button className="item__bottom_button" onClick={handleRemove}>
+            Remove
+          </button>
         </div>
         <hr />
       </div>

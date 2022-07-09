@@ -3,12 +3,28 @@
   justify-content: space-around;
   align-items: center;
   height: 35vh;
-  /* width: 90%; */
-  padding: 0 5rem;
+  /* width: 100%; */
+  padding: 0 1rem;
   gap: 1rem;
+  margin-top: 5rem;
   background: linear-gradient(
     83.88deg,
     #1b1834 25%,
     rgba(255, 255, 255, 0) 100%
   );
+}
+
+@media screen and (max-width: 768px) {
+  .features__section {
+    padding: 1.5rem;
+    flex-direction: column;
+    height: fit-content;
+  }
+}
+
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+  .features__section {
+    justify-content: space-between;
+    margin-top: 10rem;
+  }
 }

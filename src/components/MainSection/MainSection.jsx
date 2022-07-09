@@ -5,7 +5,7 @@ const MainSection = () => {
     <div className="main__section">
       <div className="main__section_container">
         <img
-          className="main__section_top_img"
+          className="main__section_top_img main__section_top_img_1"
           src={require("../../assets/img/masks.png")}
           alt="mask"
         />
@@ -16,14 +16,19 @@ const MainSection = () => {
         </div>
       </div>
 
-      <div className="main__section_container">
+      <div className="main__section_container main__section_container_right">
         <img
-          className="main__section_top_img"
+          className="main__section_top_img main__section_top_img_4"
+          src={require("../../assets/img/masks.png")}
+          alt="mask"
+        />
+        <img
+          className="main__section_top_img main__section_top_img_2"
           src={require("../../assets/img/the boss.png")}
           alt="mask"
         />
         <img
-          className="main__section_top_img"
+          className="main__section_top_img main__section_top_img_3"
           src={require("../../assets/img/guards.png")}
           alt="mask"
         />

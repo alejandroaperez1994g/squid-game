@@ -21,25 +21,30 @@ const Product = ({ id, title, image, price, discount, cart, setCart }) => {
   return (
     <div className="product__wrapper">
       <div className="product__image">
-        <button className="product__image_info">Sale</button>
+        <button className="product__image_info sharp_font">Sale</button>
         <img
           className="product__image_pict"
           src={require(`../../assets/img/products/${image}`)}
           alt=""
         />
       </div>
-      <p className="product__title">{title}</p>
+      <p className="product__title sharp_font">{title}</p>
       {added ? (
-        <p className="product__added">Added to cart</p>
+        <div className="product__bottom">
+          <p className="product__added sharp_font">Added to cart</p>
+        </div>
       ) : (
         <div className="product__bottom">
           <div className="prices">
-            <span className="prices__old">€ {price}</span>
-            <span className="prices__discount">€{discount}</span>
+            <span className="prices__old sharp_font">€ {price}</span>
+            <span className="prices__discount sharp_font">€{discount}</span>
           </div>
-          <span>|</span>
-          <button onClick={handleAddToCart} className="prices__button">
-            Shop Now
+          <span className="span">|</span>
+          <button
+            onClick={handleAddToCart}
+            className="prices__button sharp_font"
+          >
+            Buy
           </button>
         </div>
       )}

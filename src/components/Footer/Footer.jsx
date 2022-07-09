@@ -6,16 +6,16 @@ import { SiGmail } from "react-icons/si";
 const Footer = () => {
   return (
     <div className="footer__section">
-      <p className="footer__section_text link" href="/">
+      <p className="footer__section_text link sharp_font" href="/">
         Privacy Policy
       </p>
-      <p className="footer__section_text link" href="/">
+      <p className="footer__section_text link sharp_font" href="/">
         Term of Service
       </p>
-      <p className="footer__section_text link" href="/">
+      <p className="footer__section_text link sharp_font" href="/">
         Language
       </p>
-      <p className="footer__section_text">2022 Alejandro</p>
+      <p className="footer__section_text sharp_font">2022 Alejandro</p>
       <a
         href="https://github.com/alejandroaperez1994g"
         target="_blank"

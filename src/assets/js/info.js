@@ -49,7 +49,7 @@ export const info = [
         discount: 75,
       },
       {
-        title: "Squid Game Player 067 Kang Sae-Byeok",
+        title: "Squid Game Player 067 Kang Sae",
         image: "saepost.png",
         price: 70,
         discount: 64,

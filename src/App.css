@@ -1,3 +1,4 @@
+@import url("./assets/css/reset.css");
 @font-face {
   font-family: "Squid";
   src: local("Squid"),
@@ -14,6 +15,7 @@
 .App {
   display: flex;
   flex-direction: column;
+  width: 100vw;
   align-items: center;
   background: linear-gradient(146.2deg, #ff0055 0%, #000066 100%),
     linear-gradient(316.52deg, #ff0055 0%, #000066 100%);

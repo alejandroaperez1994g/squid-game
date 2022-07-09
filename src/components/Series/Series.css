@@ -5,6 +5,7 @@
   align-items: center;
   height: 75vh;
   width: 90%;
+  margin-top: -10rem;
   padding: 2rem;
   background-image: url("../../assets/img/background-series.png");
   background-position: center;
@@ -22,4 +23,23 @@
 
 .alice-carousel__wrapper {
   width: 50%;
+}
+
+@media screen and (max-width: 768px) {
+  .series__title {
+    height: 2.5rem;
+  }
+  .series__container {
+    height: 90vh;
+    background-position: initial;
+  }
+  .series__image {
+    height: 20rem;
+  }
+}
+
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+  .series__title {
+    height: 3.5rem;
+  }
 }

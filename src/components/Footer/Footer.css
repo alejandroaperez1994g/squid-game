@@ -34,3 +34,9 @@
 .footer__section_button:hover {
   cursor: pointer;
 }
+
+@media screen and (max-width: 768px) {
+  .link {
+    display: none;
+  }
+}
