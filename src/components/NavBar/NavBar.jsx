@@ -8,6 +8,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
 import { faMinus } from "@fortawesome/free-solid-svg-icons";
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
+import { faSquid } from "@fortawesome/free-solid-svg-icons";
+import Login from "../Login/Login";
 
 import IconButton from "@mui/material/IconButton";
 import Menu from "@mui/material/Menu";
@@ -24,6 +26,12 @@ const StyledBadge = styled(Badge)(({ theme }) => ({
 const Navbar = ({ cart, setCart }) => {
   const [anchorEl, setAnchorEl] = useState(null);
   const [total, setTotal] = useState(0);
+  const [visible, setVisible] = useState(false);
+
+  const handler = () => setVisible(true);
+  const closeHandler = () => {
+    setVisible(false);
+  };
 
   const handleMenu = (event) => {
     setAnchorEl(event.currentTarget);
@@ -67,15 +75,19 @@ const Navbar = ({ cart, setCart }) => {
       <div className="total__wrapper">
         <p className="sharp_font">Total</p>
         <p className="sharp_font">${total}</p>
-        <button className="sharp_font">Checkout</button>
+        <Button className="sharp_font" color="secondary" shadow>
+          Checkout
+        </Button>
       </div>
     );
   };
 
   return (
     <div className="navbar__container">
-      <button className="navbar__loginButton">Login</button>
-
+      <button className="navbar__loginButton" onClick={handler}>
+        Login
+      </button>
+      <Login visible={visible} close={closeHandler} />
       <a className="navbar__item sharp_font " href="http:/">
         Contact
       </a>

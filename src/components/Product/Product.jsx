@@ -22,6 +22,10 @@ const Product = ({ id, title, image, price, discount, cart, setCart }) => {
     cart.find((item) => item.id !== id) && setAdded(false);
   }, [cart, id]);
 
+  useEffect(() => {
+    cart.length === 0 && setAdded(false);
+  }, [cart]);
+
   return (
     <div className="product__wrapper">
       <div className="product__image">
