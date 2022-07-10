@@ -1,12 +1,15 @@
 import "./NavBar.css";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Badge from "@mui/material/Badge";
 import { styled } from "@mui/material/styles";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
-import CartItem from "../CartItem/CartItem";
+import { Table, Button, User } from "@nextui-org/react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPlus } from "@fortawesome/free-solid-svg-icons";
+import { faMinus } from "@fortawesome/free-solid-svg-icons";
+import { faTrash } from "@fortawesome/free-solid-svg-icons";
 
 import IconButton from "@mui/material/IconButton";
-import MenuItem from "@mui/material/MenuItem";
 import Menu from "@mui/material/Menu";
 
 const StyledBadge = styled(Badge)(({ theme }) => ({
@@ -20,6 +23,7 @@ const StyledBadge = styled(Badge)(({ theme }) => ({
 
 const Navbar = ({ cart, setCart }) => {
   const [anchorEl, setAnchorEl] = useState(null);
+  const [total, setTotal] = useState(0);
 
   const handleMenu = (event) => {
     setAnchorEl(event.currentTarget);
@@ -28,12 +32,42 @@ const Navbar = ({ cart, setCart }) => {
   const handleClose = () => {
     setAnchorEl(null);
   };
+  useEffect(() => {
+    let total = 0;
+    cart.map((item) => {
+      return (total += item.amount * item.price);
+    });
+    setTotal(total);
+  }, [cart]);
+
+  const handleAddAmount = (id) => {
+    cart.forEach((item) => {
+      if (item.id === id) {
+        item.amount = item.amount + 1;
+      }
+    });
+    setCart([...cart]);
+  };
+  const handleRestAmount = (id) => {
+    cart.forEach((item) => {
+      if (item.id === id && item.amount > 1) {
+        item.amount = item.amount - 1;
+      }
+    });
+    setCart([...cart]);
+  };
+
+  const handleRemove = (id) => {
+    let newArray = cart.filter((item) => item.id !== id);
+    setCart(newArray);
+  };
 
   const Total = () => {
     return (
       <div className="total__wrapper">
-        <p>Total</p>
-        <p>$45</p>
+        <p className="sharp_font">Total</p>
+        <p className="sharp_font">${total}</p>
+        <button className="sharp_font">Checkout</button>
       </div>
     );
   };
@@ -81,6 +115,7 @@ const Navbar = ({ cart, setCart }) => {
           </StyledBadge>
         </IconButton>
         <Menu
+          className="navbar__cart"
           id="menu-appbar"
           anchorEl={anchorEl}
           anchorOrigin={{
@@ -95,24 +130,85 @@ const Navbar = ({ cart, setCart }) => {
           open={Boolean(anchorEl)}
           onClose={handleClose}
         >
-          <MenuItem>Shooping Cart</MenuItem>
-          {cart.map((item, index) => {
-            return (
-              <MenuItem key={index}>
-                <CartItem
-                  id={item.id}
-                  name={item.name}
-                  img={item.img}
-                  price={item.price}
-                  amount={item.amount}
-                  cart={cart}
-                  setCart={setCart}
-                />
-              </MenuItem>
-            );
-          })}
+          <img
+            className="cart__logo"
+            src={require("../../assets/img/shopping.png")}
+            alt="shooping cart"
+          />
+          {cart.length > 0 ? (
+            <Table
+              className="cart__table"
+              aria-label="Example static collection table"
+              css={{
+                height: "auto",
+                minWidth: "auto",
+              }}
+              bordered
+            >
+              <Table.Header>
+                <Table.Column>PRODUCT</Table.Column>
+                <Table.Column>PRICE</Table.Column>
+                <Table.Column>AMOUNT</Table.Column>
+                <Table.Column></Table.Column>
+                <Table.Column></Table.Column>
+                <Table.Column></Table.Column>
+              </Table.Header>
+              <Table.Body>
+                {cart.map((item, index) => {
+                  return (
+                    <Table.Row key={index} css={{}}>
+                      <Table.Cell>
+                        <User
+                          squared
+                          src={require(`../../assets/img/products/${item.img}`)}
+                          css={{ p: 0, height: "max-content" }}
+                          name={item.name}
+                          size="xl"
+                        ></User>
+                      </Table.Cell>
+                      <Table.Cell css={{ textAlign: "center" }}>
+                        $ {item.price}
+                      </Table.Cell>
+                      <Table.Cell css={{ textAlign: "center" }}>
+                        {item.amount}
+                      </Table.Cell>
+                      <Table.Cell>
+                        <Button
+                          auto
+                          ghost
+                          onClick={() => handleAddAmount(item.id)}
+                        >
+                          <FontAwesomeIcon icon={faPlus} />
+                        </Button>
+                      </Table.Cell>
+                      <Table.Cell css={{ textAlign: "center" }}>
+                        <Button
+                          auto
+                          ghost
+                          onClick={() => handleRestAmount(item.id)}
+                        >
+                          <FontAwesomeIcon icon={faMinus} />
+                        </Button>
+                      </Table.Cell>
+                      <Table.Cell css={{ textAlign: "center" }}>
+                        <Button
+                          auto
+                          ghost
+                          color="error"
+                          onClick={() => handleRemove(item.id)}
+                        >
+                          <FontAwesomeIcon icon={faTrash} />
+                        </Button>
+                      </Table.Cell>
+                    </Table.Row>
+                  );
+                })}
+              </Table.Body>
+            </Table>
+          ) : (
+            <h1 className="sharp_font">The Shopping Cart is Empty</h1>
+          )}
           <Total />
-          <button>Checkout</button>{" "}
         </Menu>
       </div>
     </div>

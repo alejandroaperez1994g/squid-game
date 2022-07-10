@@ -34,9 +34,28 @@
 .navbar__loginButton:hover {
   cursor: pointer;
 }
+.total__wrapper {
+  align-self: flex-end;
+}
 
 .MuiList-root {
-  width: 20rem;
+  width: auto;
+  padding: 0.5rem !important;
+  -webkit-font-smoothing: auto;
+  -moz-font-smoothing: auto;
+  -moz-osx-font-smoothing: grayscale;
+  -font-smoothing: auto;
+  text-rendering: optimizeLegibility;
+  font-smooth: always;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
+}
+.MuiPaper-root {
+  display: flex;
+  justify-content: center;
+}
+.cart__logo {
+  height: 2.5rem;
 }
 
 @media screen and (max-width: 768px) {
@@ -48,6 +67,9 @@
   }
   .navbar__item_img {
     display: block;
+  }
+  .MuiList-root {
+    width: 20rem;
   }
 }
 
