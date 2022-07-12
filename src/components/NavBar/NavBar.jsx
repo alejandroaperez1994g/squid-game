@@ -74,7 +74,7 @@ const Navbar = ({ cart, setCart }) => {
     return (
       <div className="total__wrapper">
         <p className="sharp_font">Total</p>
-        <p className="sharp_font">${total}</p>
+        <p className="sharp_font">€{total}</p>
         <Button className="sharp_font" color="secondary" shadow>
           Checkout
         </Button>
@@ -179,7 +179,7 @@ const Navbar = ({ cart, setCart }) => {
                         ></User>
                       </Table.Cell>
                       <Table.Cell css={{ textAlign: "center" }}>
-                        $ {item.price}
+                        € {item.price}
                       </Table.Cell>
                       <Table.Cell css={{ textAlign: "center" }}>
                         {item.amount}
