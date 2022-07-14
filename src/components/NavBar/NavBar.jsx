@@ -8,7 +8,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
 import { faMinus } from "@fortawesome/free-solid-svg-icons";
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
-import { faSquid } from "@fortawesome/free-solid-svg-icons";
+
 import Login from "../Login/Login";
 
 import IconButton from "@mui/material/IconButton";
@@ -70,12 +70,23 @@ const Navbar = ({ cart, setCart }) => {
     setCart(newArray);
   };
 
+  const handleCheckout = () => {
+    const items = cart.map((item) => {
+      return [item];
+    });
+  };
+
   const Total = () => {
     return (
       <div className="total__wrapper">
         <p className="sharp_font">Total</p>
         <p className="sharp_font">€{total}</p>
-        <Button className="sharp_font" color="secondary" shadow>
+        <Button
+          className="sharp_font"
+          color="secondary"
+          shadow
+          onClick={handleCheckout}
+        >
           Checkout
         </Button>
       </div>
