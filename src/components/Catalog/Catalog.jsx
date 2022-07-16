@@ -1,8 +1,22 @@
-import "./Catalog.css";
 import Product from "../Product/Product";
 import { info } from "../../assets/js/info";
+import { useEffect, useState } from "react";
+import { fetchProducts } from "../helper/api";
+
+import "./Catalog.css";
 
 const Catalog = ({ cart, setCart }) => {
+  const [catalog, setCatalog] = useState([]);
+  useEffect(() => {
+    try {
+      fetchProducts().then((result) => {
+        setCatalog(result);
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  }, []);
+
   return (
     <div className="catalog__container">
       <img
@@ -11,8 +25,7 @@ const Catalog = ({ cart, setCart }) => {
         alt="title"
       />
       <div className="catalog__products">
-        {/* <Product /> */}
-        {info[0].catalog.map((item, index) => {
+        {catalog.map((item, index) => {
           return (
             <Product
               key={index}
