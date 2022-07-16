@@ -1,0 +1,7 @@
+.register__container {
+  display: flex;
+  height: 100vh;
+  border: 2px solid black;
+  background: linear-gradient(146.2deg, #ff0055 0%, #000066 100%),
+    linear-gradient(316.52deg, #ff0055 0%, #000066 100%);
+}
