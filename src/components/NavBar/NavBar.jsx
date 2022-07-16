@@ -8,8 +8,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
 import { faMinus } from "@fortawesome/free-solid-svg-icons";
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
-
-import Login from "../Login/Login";
+import { Loading } from "@nextui-org/react";
 
 import IconButton from "@mui/material/IconButton";
 import Menu from "@mui/material/Menu";
@@ -26,12 +25,13 @@ const StyledBadge = styled(Badge)(({ theme }) => ({
 const Navbar = ({ cart, setCart }) => {
   const [anchorEl, setAnchorEl] = useState(null);
   const [total, setTotal] = useState(0);
-  const [visible, setVisible] = useState(false);
 
-  const handler = () => setVisible(true);
-  const closeHandler = () => {
-    setVisible(false);
-  };
+  const [enableCheckout, setEnableCheckout] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+
+  useEffect(() => {
+    cart.length === 0 ? setEnableCheckout(true) : setEnableCheckout(false);
+  }, [cart]);
 
   const handleMenu = (event) => {
     setAnchorEl(event.currentTarget);
@@ -72,8 +72,30 @@ const Navbar = ({ cart, setCart }) => {
 
   const handleCheckout = () => {
     const items = cart.map((item) => {
-      return [item];
+      return item;
     });
+    setIsLoading(true);
+    fetch("http://localhost:4242/create-checkout-session", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        items,
+      }),
+    })
+      .then((res) => {
+        if (res.ok) return res.json();
+        return res.json().then((json) => Promise.reject(json));
+      })
+      .then(({ url }) => {
+        setIsLoading(false);
+        window.location = url;
+        setCart([]);
+      })
+      .catch((e) => {
+        console.error(e);
+      });
   };
 
   const Total = () => {
@@ -86,8 +108,9 @@ const Navbar = ({ cart, setCart }) => {
           color="secondary"
           shadow
           onClick={handleCheckout}
+          disabled={enableCheckout}
         >
-          Checkout
+          {isLoading ? <Loading type="points" color="white" /> : "Checkout"}
         </Button>
       </div>
     );
@@ -95,10 +118,8 @@ const Navbar = ({ cart, setCart }) => {
 
   return (
     <div className="navbar__container">
-      <button className="navbar__loginButton" onClick={handler}>
-        Login
-      </button>
-      <Login visible={visible} close={closeHandler} />
+      <button className="navbar__loginButton">Login</button>
+
       <a className="navbar__item sharp_font " href="http:/">
         Contact
       </a>
