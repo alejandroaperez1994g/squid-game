@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { Login, Success } from "./components";
+import { Success } from "./components";
 import App from "./App";
+import Login from "./pages/Login/Login";
 import { CartContext } from "./components/contexts/CartContext";
 
 let cart = JSON.parse(localStorage.getItem("cart")) || [];
