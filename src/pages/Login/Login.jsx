@@ -1,8 +1,23 @@
 import { Input, Button } from "@nextui-org/react";
+import { signInWithPopup } from "firebase/auth";
+import { auth, provider } from "../../firebase";
+import { useNavigate } from "react-router-dom";
 
 import "./Login.css";
 
 const Login = () => {
+  const navigator = useNavigate();
+
+  const handleSignIn = () => {
+    signInWithPopup(auth, provider)
+      .then((result) => {
+        console.log(result);
+      })
+      .catch((e) => {
+        console.log(e);
+      });
+  };
+
   return (
     <div className="login__container">
       <div className="login__container_section">
@@ -38,6 +53,7 @@ const Login = () => {
                   color: "black",
                   border: "1px solid gray",
                 }}
+                onClick={handleSignIn}
               >
                 Sign in with Google
               </Button>

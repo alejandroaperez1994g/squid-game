@@ -7,7 +7,6 @@ import { Button, Loading } from "@nextui-org/react";
 
 import { CartContext } from "../contexts/CartContext";
 import { ShoppingCartTable } from "../index";
-import { getStripeCheckout } from "../helper/api";
 
 import Menu from "@mui/material/Menu";
 import "./NavBar.css";
