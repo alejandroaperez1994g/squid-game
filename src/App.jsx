@@ -1,21 +1,18 @@
 import "./App.css";
-import { useEffect, useState } from "react";
-import NavBar from "./components/NavBar/NavBar";
-import MainSection from "./components/MainSection/MainSection";
-import Features from "./components/Features/Features";
-import Catalog from "./components/Catalog/Catalog";
-import Series from "./components/Series/Series";
-import BottomSection from "./components/BottomSection/BottomSection";
-import Footer from "./components/Footer/Footer";
-
-let cart = JSON.parse(localStorage.getItem("cart")) || [];
+import { useContext } from "react";
+import { CartContext } from "./components/contexts/CartContext";
+import {
+  NavBar,
+  MainSection,
+  Features,
+  Catalog,
+  Series,
+  BottomSection,
+  Footer,
+} from "./components";
 
 function App() {
-  const [shoppingCart, setShoppingCart] = useState(cart);
-
-  useEffect(() => {
-    localStorage.setItem("cart", JSON.stringify(shoppingCart));
-  }, [shoppingCart]);
+  const { shoppingCart, setShoppingCart } = useContext(CartContext);
 
   return (
     <div className="App">
