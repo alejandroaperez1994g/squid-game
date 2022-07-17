@@ -1,30 +1,32 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import PropTypes from "prop-types";
+import { CartContext } from "../contexts/CartContext";
 
 import "./Product.css";
 
-const Product = ({ id, title, image, price, discount, cart, setCart }) => {
+const Product = ({ id, title, image, price, discount }) => {
   const [added, setAdded] = useState(false);
+  const { shoppingCart, setShoppingCart } = useContext(CartContext);
 
   const handleAddToCart = (e) => {
     setAdded(true);
-    setCart([
-      ...cart,
+    setShoppingCart([
+      ...shoppingCart,
       { id: id, name: title, img: image, price: price, amount: 1 },
     ]);
   };
 
   useEffect(() => {
-    cart.find((item) => item.id === id) && setAdded(true);
-  }, [added, cart, id]);
+    shoppingCart.find((item) => item.id === id) && setAdded(true);
+  }, [added, shoppingCart, id]);
 
   useEffect(() => {
-    cart.find((item) => item.id !== id) && setAdded(false);
-  }, [cart, id]);
+    shoppingCart.find((item) => item.id !== id) && setAdded(false);
+  }, [shoppingCart, id]);
 
   useEffect(() => {
-    cart.length === 0 && setAdded(false);
-  }, [cart]);
+    shoppingCart.length === 0 && setAdded(false);
+  }, [shoppingCart]);
 
   return (
     <div className="product__wrapper">

@@ -1,12 +1,12 @@
-import Product from "../Product/Product";
-import { info } from "../../assets/js/info";
 import { useEffect, useState } from "react";
 import { fetchProducts } from "../helper/api";
+import Product from "../Product/Product";
 
 import "./Catalog.css";
 
-const Catalog = ({ cart, setCart }) => {
+const Catalog = () => {
   const [catalog, setCatalog] = useState([]);
+
   useEffect(() => {
     try {
       fetchProducts().then((result) => {
@@ -34,8 +34,6 @@ const Catalog = ({ cart, setCart }) => {
               image={item.image}
               price={item.price}
               discount={item.discount}
-              cart={cart}
-              setCart={setCart}
             />
           );
         })}

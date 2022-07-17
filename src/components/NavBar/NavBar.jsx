@@ -1,17 +1,15 @@
-import "./NavBar.css";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import Badge from "@mui/material/Badge";
 import { styled } from "@mui/material/styles";
-import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
-import { Table, Button, User } from "@nextui-org/react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPlus } from "@fortawesome/free-solid-svg-icons";
-import { faMinus } from "@fortawesome/free-solid-svg-icons";
-import { faTrash } from "@fortawesome/free-solid-svg-icons";
-import { Loading } from "@nextui-org/react";
-
 import IconButton from "@mui/material/IconButton";
+import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
+import { Table, Button, User, Loading } from "@nextui-org/react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPlus, faMinus, faTrash } from "@fortawesome/free-solid-svg-icons";
+import { CartContext } from "../contexts/CartContext";
+
 import Menu from "@mui/material/Menu";
+import "./NavBar.css";
 
 const StyledBadge = styled(Badge)(({ theme }) => ({
   "& .MuiBadge-badge": {
@@ -22,16 +20,19 @@ const StyledBadge = styled(Badge)(({ theme }) => ({
   },
 }));
 
-const Navbar = ({ cart, setCart }) => {
+const Navbar = () => {
   const [anchorEl, setAnchorEl] = useState(null);
   const [total, setTotal] = useState(0);
+  const { shoppingCart, setShoppingCart } = useContext(CartContext);
 
   const [enableCheckout, setEnableCheckout] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
-    cart.length === 0 ? setEnableCheckout(true) : setEnableCheckout(false);
-  }, [cart]);
+    shoppingCart.length === 0
+      ? setEnableCheckout(true)
+      : setEnableCheckout(false);
+  }, [shoppingCart]);
 
   const handleMenu = (event) => {
     setAnchorEl(event.currentTarget);
@@ -42,40 +43,40 @@ const Navbar = ({ cart, setCart }) => {
   };
   useEffect(() => {
     let total = 0;
-    cart.map((item) => {
+    shoppingCart.map((item) => {
       return (total += item.amount * item.price);
     });
     setTotal(total);
-  }, [cart]);
+  }, [shoppingCart]);
 
   const handleAddAmount = (id) => {
-    cart.forEach((item) => {
+    shoppingCart.forEach((item) => {
       if (item.id === id) {
         item.amount = item.amount + 1;
       }
     });
-    setCart([...cart]);
+    setShoppingCart([...shoppingCart]);
   };
   const handleRestAmount = (id) => {
-    cart.forEach((item) => {
+    shoppingCart.forEach((item) => {
       if (item.id === id && item.amount > 1) {
         item.amount = item.amount - 1;
       }
     });
-    setCart([...cart]);
+    setShoppingCart([...shoppingCart]);
   };
 
   const handleRemove = (id) => {
-    let newArray = cart.filter((item) => item.id !== id);
-    setCart(newArray);
+    let newArray = shoppingCart.filter((item) => item.id !== id);
+    setShoppingCart(newArray);
   };
 
   const handleCheckout = () => {
-    const items = cart.map((item) => {
+    const items = shoppingCart.map((item) => {
       return item;
     });
     setIsLoading(true);
-    fetch("http://localhost:4242/create-checkout-session", {
+    fetch(process.env.REACT_APP_STRIPE_SERVER_URL, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -91,7 +92,7 @@ const Navbar = ({ cart, setCart }) => {
       .then(({ url }) => {
         setIsLoading(false);
         window.location = url;
-        setCart([]);
+        setShoppingCart([]);
       })
       .catch((e) => {
         console.error(e);
@@ -154,7 +155,7 @@ const Navbar = ({ cart, setCart }) => {
           onClick={handleMenu}
           color="inherit"
         >
-          <StyledBadge badgeContent={cart.length} color="primary">
+          <StyledBadge badgeContent={shoppingCart.length} color="primary">
             <ShoppingCartIcon style={{ color: "white" }} />
           </StyledBadge>
         </IconButton>
@@ -179,7 +180,7 @@ const Navbar = ({ cart, setCart }) => {
             src={require("../../assets/img/shopping.png")}
             alt="shooping cart"
           />
-          {cart.length > 0 ? (
+          {shoppingCart.length > 0 ? (
             <Table
               className="cart__table"
               aria-label="Example static collection table"
@@ -198,7 +199,7 @@ const Navbar = ({ cart, setCart }) => {
                 <Table.Column></Table.Column>
               </Table.Header>
               <Table.Body>
-                {cart.map((item, index) => {
+                {shoppingCart.map((item, index) => {
                   return (
                     <Table.Row key={index} css={{}}>
                       <Table.Cell>
