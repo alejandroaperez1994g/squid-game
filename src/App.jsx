@@ -1,6 +1,7 @@
 import "./App.css";
 import { useContext } from "react";
 import { CartContext } from "./components/contexts/CartContext";
+
 import {
   NavBar,
   MainSection,

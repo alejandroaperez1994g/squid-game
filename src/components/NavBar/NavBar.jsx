@@ -3,10 +3,12 @@ import Badge from "@mui/material/Badge";
 import { styled } from "@mui/material/styles";
 import IconButton from "@mui/material/IconButton";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
-import { Button, Loading } from "@nextui-org/react";
+import { Button, Loading, Avatar } from "@nextui-org/react";
 
 import { CartContext } from "../contexts/CartContext";
+import { UserContext } from "../contexts/UserContext";
 import { ShoppingCartTable } from "../index";
+import { Link } from "react-router-dom";
 
 import Menu from "@mui/material/Menu";
 import "./NavBar.css";
@@ -24,6 +26,7 @@ const Navbar = () => {
   const [anchorEl, setAnchorEl] = useState(null);
   const [total, setTotal] = useState(0);
   const { shoppingCart, setShoppingCart } = useContext(CartContext);
+  const { userData } = useContext(UserContext);
 
   const [enableCheckout, setEnableCheckout] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
@@ -97,7 +100,21 @@ const Navbar = () => {
 
   return (
     <div className="navbar__container">
-      <button className="navbar__loginButton">Login</button>
+      {userData ? (
+        <Avatar
+          size="lg"
+          src={
+            userData?.photo || "https://i.pravatar.cc/150?u=a042581f4e29026024d"
+          }
+          referrerPolicy="no-referrer"
+          color="secondary"
+          bordered
+        />
+      ) : (
+        <button className="navbar__loginButton">
+          <Link to={"/login"}> Login </Link>
+        </button>
+      )}
 
       <a className="navbar__item sharp_font " href="http:/">
         Contact

@@ -1,17 +1,22 @@
+import { useContext } from "react";
 import { Input, Button } from "@nextui-org/react";
 import { signInWithPopup } from "firebase/auth";
 import { auth, provider } from "../../firebase";
 import { useNavigate } from "react-router-dom";
+import { UserContext } from "../../components/contexts/UserContext";
 
 import "./Login.css";
 
 const Login = () => {
   const navigator = useNavigate();
+  const { setUserData } = useContext(UserContext);
 
   const handleSignIn = () => {
     signInWithPopup(auth, provider)
       .then((result) => {
-        console.log(result);
+        const { displayName, email, photoURL } = result.user;
+        setUserData({ name: displayName, email: email, photo: photoURL });
+        navigator("/");
       })
       .catch((e) => {
         console.log(e);
