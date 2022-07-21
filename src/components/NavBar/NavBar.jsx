@@ -3,10 +3,11 @@ import Badge from "@mui/material/Badge";
 import { styled } from "@mui/material/styles";
 import IconButton from "@mui/material/IconButton";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
-import { Button, Loading, Avatar } from "@nextui-org/react";
+import { Button, Loading } from "@nextui-org/react";
 
 import { CartContext } from "../contexts/CartContext";
 import { UserContext } from "../contexts/UserContext";
+import DropdownMenu from "../DropdownMenu/DropdownMenu";
 import { ShoppingCartTable } from "../index";
 import { Link } from "react-router-dom";
 
@@ -101,15 +102,7 @@ const Navbar = () => {
   return (
     <div className="navbar__container">
       {userData ? (
-        <Avatar
-          size="lg"
-          src={
-            userData?.photo || "https://i.pravatar.cc/150?u=a042581f4e29026024d"
-          }
-          referrerPolicy="no-referrer"
-          color="secondary"
-          bordered
-        />
+        <DropdownMenu email={userData.email} photo={userData?.photo} />
       ) : (
         <button className="navbar__loginButton">
           <Link to={"/login"}> Login </Link>

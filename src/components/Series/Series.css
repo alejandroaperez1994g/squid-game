@@ -5,7 +5,7 @@
   align-items: center;
   height: 75vh;
   width: 90%;
-  margin-top: -10rem;
+  margin-top: -5rem;
   padding: 2rem;
   background-image: url("../../assets/img/background-series.png");
   background-position: center;
@@ -32,6 +32,7 @@
   .series__container {
     height: 90vh;
     background-position: initial;
+    margin-top: -15rem;
   }
   .series__image {
     height: 20rem;

@@ -8,7 +8,8 @@ const cors = require("cors");
 app.use(express.json());
 app.use(
   cors({
-    origin: "http://localhost:3000",
+    // origin: "http://localhost:3000",
+    origin: process.env.CLIENT_URL,
   })
 );
 
@@ -37,5 +38,5 @@ app.post("/create-checkout-session", async (req, res) => {
     res.status(500).json({ error: e.message });
   }
 });
-
-app.listen(4242, () => console.log("Running on port 4242"));
+const PORT = 4242;
+app.listen(PORT, () => console.log(`Running on port ${PORT}`));

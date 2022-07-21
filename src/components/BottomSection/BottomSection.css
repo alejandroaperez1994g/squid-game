@@ -5,6 +5,7 @@
   height: 60vh;
   color: white;
   background: linear-gradient(143.36deg, #c1a8e4 0%, #8552c9 75%);
+  margin-top: 7rem;
 }
 
 .bottom__section_left {
@@ -71,6 +72,7 @@
     flex-direction: column;
     justify-content: center;
     height: 75vh;
+    margin-top: 1rem;
   }
   .bottom__section_image {
     height: 3rem;

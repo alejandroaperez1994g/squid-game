@@ -7,14 +7,19 @@ import { CartContext } from "./components/contexts/CartContext";
 import { UserContext } from "./components/contexts/UserContext";
 
 let cart = JSON.parse(localStorage.getItem("cart")) || [];
+let user = JSON.parse(localStorage.getItem("userData")) || null;
 
 const Router = () => {
   const [shoppingCart, setShoppingCart] = useState(cart);
-  const [userData, setUserData] = useState(null);
+  const [userData, setUserData] = useState(user);
 
   useEffect(() => {
     localStorage.setItem("cart", JSON.stringify(shoppingCart));
   }, [shoppingCart]);
+
+  useEffect(() => {
+    localStorage.setItem("userData", JSON.stringify(userData));
+  }, [userData]);
 
   return (
     <CartContext.Provider value={{ shoppingCart, setShoppingCart }}>
