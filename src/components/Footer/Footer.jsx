@@ -1,7 +1,8 @@
-import "./Footer.css";
+import { memo } from "react";
 import { BsGithub } from "react-icons/bs";
 import { BsLinkedin } from "react-icons/bs";
 import { SiGmail } from "react-icons/si";
+import "./Footer.css";
 
 const Footer = () => {
   return (
@@ -47,4 +48,4 @@ const Footer = () => {
   );
 };
 
-export default Footer;
+export default memo(Footer);

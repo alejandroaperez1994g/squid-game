@@ -1,7 +1,8 @@
-import "./Series.css";
+import { memo } from "react";
 import AliceCarousel from "react-alice-carousel";
 import "react-alice-carousel/lib/alice-carousel.css";
 import { info } from "../../assets/js/info";
+import "./Series.css";
 
 const handleDragStart = (e) => e.preventDefault();
 
@@ -38,4 +39,4 @@ const Series = () => {
   );
 };
 
-export default Series;
+export default memo(Series);

@@ -1,6 +1,7 @@
-import "./Features.css";
+import { memo } from "react";
 import FeatureItem from "../FeatureItem/FeatureItem";
 import { info } from "../../assets/js/info";
+import "./Features.css";
 
 const Features = () => {
   return (
@@ -19,4 +20,4 @@ const Features = () => {
   );
 };
 
-export default Features;
+export default memo(Features);

@@ -1,3 +1,4 @@
+import { memo } from "react";
 import "./BottomSection.css";
 
 const BottomSection = () => {
@@ -32,4 +33,4 @@ const BottomSection = () => {
   );
 };
 
-export default BottomSection;
+export default memo(BottomSection);

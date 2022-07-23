@@ -1,7 +1,8 @@
-import "./FeatureItem.css";
+import { memo } from "react";
 import * as icons from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import PropTypes from "prop-types";
+import "./FeatureItem.css";
 
 const FeatureItem = ({ id, title, text, iconShape }) => {
   return (
@@ -29,4 +30,4 @@ FeatureItem.defaultProps = {
   iconShape: "",
 };
 
-export default FeatureItem;
+export default memo(FeatureItem);
