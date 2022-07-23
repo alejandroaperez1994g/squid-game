@@ -1,3 +1,4 @@
+import { Toaster } from "react-hot-toast";
 import "./Home.css";
 
 import {
@@ -20,6 +21,7 @@ function Home() {
       <Series />
       <BottomSection />
       <Footer />
+      <Toaster position="bottom-left" reverseOrder={false} />
     </div>
   );
 }
