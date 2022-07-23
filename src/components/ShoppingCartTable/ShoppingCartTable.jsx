@@ -43,6 +43,10 @@ const ShoppingCartTable = ({ wish }) => {
     }
   };
 
+  const handleAddToCart = (data) => {
+    setShoppingCart([...shoppingCart, data]);
+  };
+
   return (
     <Table
       className="cart__table"
@@ -92,7 +96,7 @@ const ShoppingCartTable = ({ wish }) => {
                     auto
                     ghost
                     color="secondary"
-                    onClick={() => handleRemove(item?.id)}
+                    onClick={() => handleAddToCart({ ...item, amount: 1 })}
                   >
                     <ShoppingCartCheckoutIcon />
                   </Button>

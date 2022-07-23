@@ -1,7 +1,6 @@
 export const ACTIONS = {
   ADD_WISH: "ADD_WISH",
   REMOVE_WISH: "REMOVE_WISH",
-  ADD_TO_CART: "ADD_TO_CART",
 };
 export const wishReducer = (wishList, action) => {
   switch (action.type) {
