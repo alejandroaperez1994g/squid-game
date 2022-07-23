@@ -5,8 +5,8 @@ import IconButton from "@mui/material/IconButton";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import { Button, Loading } from "@nextui-org/react";
 
-import { CartContext } from "../contexts/CartContext";
-import { UserContext } from "../contexts/UserContext";
+import { CartContext } from "../../contexts/CartContext";
+import { UserContext } from "../../contexts/UserContext";
 import DropdownMenu from "../DropdownMenu/DropdownMenu";
 import { ShoppingCartTable } from "../index";
 import { Link } from "react-router-dom";

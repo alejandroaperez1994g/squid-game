@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { fetchProducts } from "../helper/api";
+import { fetchProducts } from "../../helper/api";
 import Product from "../Product/Product";
 
 import "./Catalog.css";

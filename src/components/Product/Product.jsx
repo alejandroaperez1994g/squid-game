@@ -1,6 +1,6 @@
 import { useEffect, useState, useContext } from "react";
 import PropTypes from "prop-types";
-import { CartContext } from "../contexts/CartContext";
+import { CartContext } from "../../contexts/CartContext";
 
 import "./Product.css";
 

@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { CartContext } from "../contexts/CartContext";
+import { CartContext } from "../../contexts/CartContext";
 import { faPlus, faMinus, faTrash } from "@fortawesome/free-solid-svg-icons";
 import { Table, Button, User } from "@nextui-org/react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";

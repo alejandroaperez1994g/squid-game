@@ -3,7 +3,7 @@ import { Input, Button } from "@nextui-org/react";
 import { signInWithPopup } from "firebase/auth";
 import { auth, provider } from "../../firebase";
 import { useNavigate } from "react-router-dom";
-import { UserContext } from "../../components/contexts/UserContext";
+import { UserContext } from "../../contexts/UserContext";
 
 import "./Login.css";
 

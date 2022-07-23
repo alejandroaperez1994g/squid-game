@@ -1,18 +1,18 @@
-@import url("./assets/css/reset.css");
+@import url("../../assets/css/reset.css");
 @font-face {
   font-family: "Squid";
   src: local("Squid"),
-    url("./assets/fonts/Game\ Of\ Squids.ttf") format("truetype");
+    url("../../assets/fonts/Game\ Of\ Squids.ttf") format("truetype");
   font-weight: bold;
 }
 @font-face {
   font-family: "Sharp";
   src: local("Sharp"),
-    url("./assets/fonts/SharpGrotesk-Book15.otf") format("truetype");
+    url("../../assets/fonts/SharpGrotesk-Book15.otf") format("truetype");
   font-weight: bold;
 }
 
-.App {
+.Home {
   display: flex;
   flex-direction: column;
   width: 100vw;
