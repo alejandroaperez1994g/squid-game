@@ -45,6 +45,7 @@
   background: linear-gradient(145deg, #d13571, #f83f86);
   border: none;
   margin-left: 0.5rem;
+  cursor: pointer;
 }
 
 .product__title {

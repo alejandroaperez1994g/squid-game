@@ -1,6 +1,4 @@
 import "./Home.css";
-import { useContext } from "react";
-import { CartContext } from "../../contexts/CartContext";
 
 import {
   NavBar,
@@ -13,14 +11,12 @@ import {
 } from "../../components";
 
 function Home() {
-  const { shoppingCart, setShoppingCart } = useContext(CartContext);
-
   return (
     <div className="Home">
-      <NavBar cart={shoppingCart} setCart={setShoppingCart} />
+      <NavBar />
       <MainSection />
       <Features />
-      <Catalog cart={shoppingCart} setCart={setShoppingCart} />
+      <Catalog />
       <Series />
       <BottomSection />
       <Footer />

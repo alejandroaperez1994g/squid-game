@@ -1,37 +1,71 @@
 import { useEffect, useState, useContext } from "react";
 import PropTypes from "prop-types";
 import { CartContext } from "../../contexts/CartContext";
+import { WishContext } from "../../contexts/WishContext";
+import FavoriteIcon from "@mui/icons-material/Favorite";
+import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
+import { ACTIONS } from "../../reducers/wishReducer";
 
 import "./Product.css";
 
 const Product = ({ id, title, image, price, discount }) => {
   const [added, setAdded] = useState(false);
+  const [addedAsFavorite, setAddedAsFavorite] = useState(false);
   const { shoppingCart, setShoppingCart } = useContext(CartContext);
+  const { wishList, dispatch } = useContext(WishContext);
 
   const handleAddToCart = (e) => {
     setAdded(true);
     setShoppingCart([
       ...shoppingCart,
-      { id: id, name: title, img: image, price: price, amount: 1 },
+      { id: id, name: title, img: image, price: discount, amount: 1 },
     ]);
   };
 
-  useEffect(() => {
-    shoppingCart.find((item) => item.id === id) && setAdded(true);
-  }, [added, shoppingCart, id]);
+  const toggleWishList = () => {
+    if (addedAsFavorite) {
+      console.log("remove");
+      dispatch({
+        type: ACTIONS.REMOVE_WISH,
+        payload: { id },
+      });
+    } else {
+      console.log("add");
+      dispatch({
+        type: ACTIONS.ADD_WISH,
+        payload: { id, title, image, discount },
+      });
+    }
+  };
 
   useEffect(() => {
-    shoppingCart.find((item) => item.id !== id) && setAdded(false);
+    const check = wishList.some((item) => {
+      if (item.id === id) {
+        return true;
+      }
+      return false;
+    });
+    check && setAddedAsFavorite(true);
+    !check && setAddedAsFavorite(false);
+  }, [wishList, id]);
+
+  useEffect(() => {
+    const check = shoppingCart.some((item) => {
+      if (item.id === id) {
+        return true;
+      }
+      return false;
+    });
+    check && setAdded(true);
+    !check && setAdded(false);
   }, [shoppingCart, id]);
-
-  useEffect(() => {
-    shoppingCart.length === 0 && setAdded(false);
-  }, [shoppingCart]);
 
   return (
     <div className="product__wrapper">
       <div className="product__image">
-        <button className="product__image_info sharp_font">Sale</button>
+        <button className="product__image_info" onClick={toggleWishList}>
+          {addedAsFavorite ? <FavoriteIcon /> : <FavoriteBorderIcon />}
+        </button>
         <img
           className="product__image_pict"
           src={require(`../../assets/img/products/${image}`)}

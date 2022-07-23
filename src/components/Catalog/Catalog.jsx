@@ -4,7 +4,7 @@ import Product from "../Product/Product";
 
 import "./Catalog.css";
 
-const Catalog = () => {
+const Catalog = ({ dispatch }) => {
   const [catalog, setCatalog] = useState([]);
 
   useEffect(() => {
@@ -34,6 +34,7 @@ const Catalog = () => {
               image={item.image}
               price={item.price}
               discount={item.discount}
+              dispatch={dispatch}
             />
           );
         })}
