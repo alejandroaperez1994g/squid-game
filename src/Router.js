@@ -12,12 +12,13 @@ import { wishReducer } from "./reducers/wishReducer";
 
 let cart = JSON.parse(localStorage.getItem("cart")) || [];
 let user = JSON.parse(localStorage.getItem("userData")) || null;
+let wishListStorage = JSON.parse(localStorage.getItem("wishList")) || [];
 
 const Router = () => {
   const [shoppingCart, setShoppingCart] = useState(cart);
   const [userData, setUserData] = useState(user);
-  const [wishList, dispatch] = useReducer(wishReducer, []);
-  console.log(wishList);
+  const [wishList, dispatch] = useReducer(wishReducer, wishListStorage);
+
   useEffect(() => {
     localStorage.setItem("cart", JSON.stringify(shoppingCart));
   }, [shoppingCart]);
@@ -25,6 +26,10 @@ const Router = () => {
   useEffect(() => {
     localStorage.setItem("userData", JSON.stringify(userData));
   }, [userData]);
+
+  useEffect(() => {
+    localStorage.setItem("wishList", JSON.stringify(wishList));
+  }, [wishList]);
 
   return (
     <CartContext.Provider value={{ shoppingCart, setShoppingCart }}>

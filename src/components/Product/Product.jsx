@@ -24,13 +24,11 @@ const Product = ({ id, title, image, price, discount }) => {
 
   const toggleWishList = () => {
     if (addedAsFavorite) {
-      console.log("remove");
       dispatch({
         type: ACTIONS.REMOVE_WISH,
         payload: { id },
       });
     } else {
-      console.log("add");
       dispatch({
         type: ACTIONS.ADD_WISH,
         payload: { id, title, image, discount },

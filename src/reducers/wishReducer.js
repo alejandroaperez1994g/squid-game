@@ -8,7 +8,12 @@ export const wishReducer = (wishList, action) => {
     case ACTIONS.ADD_WISH:
       return [
         ...wishList,
-        { id: action.payload.id, name: action.payload.title },
+        {
+          id: action.payload.id,
+          name: action.payload.title,
+          img: action.payload.image,
+          price: action.payload.discount,
+        },
       ];
     case ACTIONS.REMOVE_WISH:
       return wishList.filter((item) => item.id !== action.payload.id);
