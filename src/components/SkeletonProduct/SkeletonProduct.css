@@ -1,0 +1,16 @@
+.skeleton {
+  height: 23rem;
+  width: 18.5rem;
+  border: 2px solid white;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  padding: 0.5rem;
+  background: rgba(255, 255, 255, 0.1);
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+.skeleton__bottom {
+  display: flex;
+  width: 100%;
+  justify-content: space-around;
+  height: 40%;
+}

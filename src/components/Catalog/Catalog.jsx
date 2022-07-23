@@ -2,15 +2,19 @@ import { useEffect, useState } from "react";
 import { fetchProducts } from "../../helper/api";
 import Product from "../Product/Product";
 
+import SkeletonProduct from "../SkeletonProduct/SkeletonProduct";
+
 import "./Catalog.css";
 
 const Catalog = ({ dispatch }) => {
   const [catalog, setCatalog] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     try {
       fetchProducts().then((result) => {
         setCatalog(result);
+        setIsLoading(false);
       });
     } catch (error) {
       console.log(error);
@@ -25,19 +29,29 @@ const Catalog = ({ dispatch }) => {
         alt="title"
       />
       <div className="catalog__products">
-        {catalog.map((item, index) => {
-          return (
-            <Product
-              key={index}
-              id={index}
-              title={item.title}
-              image={item.image}
-              price={item.price}
-              discount={item.discount}
-              dispatch={dispatch}
-            />
-          );
-        })}
+        {isLoading ? (
+          <>
+            <SkeletonProduct />
+            <SkeletonProduct />
+            <SkeletonProduct />
+            <SkeletonProduct />
+            <SkeletonProduct />
+          </>
+        ) : (
+          catalog.map((item, index) => {
+            return (
+              <Product
+                key={index}
+                id={index}
+                title={item.title}
+                image={item.image}
+                price={item.price}
+                discount={item.discount}
+                dispatch={dispatch}
+              />
+            );
+          })
+        )}
       </div>
     </div>
   );
