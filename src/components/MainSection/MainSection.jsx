@@ -1,8 +1,18 @@
+import { motion } from "framer-motion";
 import "./MainSection.css";
 
 const MainSection = () => {
   return (
-    <div className="main__section">
+    <motion.div
+      initial={{ opacity: 0, y: -100 }}
+      animate={{ y: 0, opacity: 1 }}
+      transition={{
+        duration: 0.5,
+        ease: "linear",
+        type: "tween",
+      }}
+      className="main__section"
+    >
       <div className="main__section_container">
         <img
           className="main__section_top_img main__section_top_img_1"
@@ -33,7 +43,7 @@ const MainSection = () => {
           alt="mask"
         />
       </div>
-    </div>
+    </motion.div>
   );
 };
 
