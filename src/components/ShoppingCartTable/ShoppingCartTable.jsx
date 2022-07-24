@@ -11,7 +11,7 @@ import "./ShoppingCartTable.css";
 import { ACTIONS } from "../../reducers/wishReducer";
 
 const ShoppingCartTable = ({ wish }) => {
-  const { shoppingCart, setShoppingCart } = useContext(CartContext);
+  const { shoppingCart, setShoppingCart, notify } = useContext(CartContext);
   const { wishList, dispatch } = useContext(WishContext);
 
   const handleAddAmount = (id) => {
@@ -31,20 +31,23 @@ const ShoppingCartTable = ({ wish }) => {
     setShoppingCart([...shoppingCart]);
   };
 
-  const handleRemove = (id) => {
+  const handleRemove = (id, name) => {
     if (wish) {
       dispatch({
         type: ACTIONS.REMOVE_WISH,
         payload: { id },
       });
+      notify(`${name} removed from the Wish List`);
     } else {
       let newArray = shoppingCart.filter((item) => item.id !== id);
       setShoppingCart(newArray);
+      notify(`${name} removed from the Shopping Cart`);
     }
   };
 
   const handleAddToCart = (data) => {
     setShoppingCart([...shoppingCart, data]);
+    notify(`${data.name} added to the Shopping Cart`);
   };
 
   return (
@@ -107,7 +110,7 @@ const ShoppingCartTable = ({ wish }) => {
                     auto
                     ghost
                     color="error"
-                    onClick={() => handleRemove(item?.id)}
+                    onClick={() => handleRemove(item?.id, item.name)}
                   >
                     <DeleteForeverIcon />
                   </Button>
@@ -151,7 +154,7 @@ const ShoppingCartTable = ({ wish }) => {
                     auto
                     ghost
                     color="error"
-                    onClick={() => handleRemove(item.id)}
+                    onClick={() => handleRemove(item.id, item.name)}
                   >
                     <FontAwesomeIcon icon={faTrash} />
                   </Button>

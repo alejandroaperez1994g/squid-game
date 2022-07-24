@@ -1,13 +1,12 @@
 import { useState, useEffect, useReducer } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import toast from "react-hot-toast";
 import { Success } from "./components";
 
 import Login from "./pages/Login/Login";
 import Home from "./pages/Home/Home";
-import { CartContext } from "./contexts/CartContext";
-import { UserContext } from "./contexts/UserContext";
-import { WishContext } from "./contexts/WishContext";
 
+import { CartContext, UserContext, WishContext } from "./contexts";
 import { wishReducer } from "./reducers/wishReducer";
 
 let cart = JSON.parse(localStorage.getItem("cart")) || [];
@@ -18,6 +17,14 @@ const Router = () => {
   const [shoppingCart, setShoppingCart] = useState(cart);
   const [userData, setUserData] = useState(user);
   const [wishList, dispatch] = useReducer(wishReducer, wishListStorage);
+
+  const notify = (message, type = "success") => {
+    if (type === "error") {
+      toast.error(message);
+      return;
+    }
+    toast.success(message);
+  };
 
   useEffect(() => {
     localStorage.setItem("cart", JSON.stringify(shoppingCart));
@@ -32,7 +39,7 @@ const Router = () => {
   }, [wishList]);
 
   return (
-    <CartContext.Provider value={{ shoppingCart, setShoppingCart }}>
+    <CartContext.Provider value={{ shoppingCart, setShoppingCart, notify }}>
       <UserContext.Provider value={{ userData, setUserData }}>
         <BrowserRouter>
           <Routes>

@@ -4,6 +4,7 @@ import { styled } from "@mui/material/styles";
 import IconButton from "@mui/material/IconButton";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import { Button, Loading } from "@nextui-org/react";
+import { useNavigate } from "react-router-dom";
 
 import { CartContext } from "../../contexts/CartContext";
 import { UserContext } from "../../contexts/UserContext";
@@ -26,8 +27,9 @@ const StyledBadge = styled(Badge)(({ theme }) => ({
 const Navbar = () => {
   const [anchorEl, setAnchorEl] = useState(null);
   const [total, setTotal] = useState(0);
-  const { shoppingCart, setShoppingCart } = useContext(CartContext);
+  const { shoppingCart, setShoppingCart, notify } = useContext(CartContext);
   const { userData } = useContext(UserContext);
+  const navigator = useNavigate();
 
   const [enableCheckout, setEnableCheckout] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
@@ -54,6 +56,15 @@ const Navbar = () => {
   }, [shoppingCart]);
 
   const handleCheckout = () => {
+    if (!userData) {
+      notify("You must be authenticated to checkout", "error");
+      notify("You will be redirected to Login", "error");
+      setTimeout(() => {
+        navigator("/login");
+      }, 4000);
+      return;
+    }
+
     const items = shoppingCart.map((item) => {
       return item;
     });
@@ -74,7 +85,6 @@ const Navbar = () => {
       .then(({ url }) => {
         setIsLoading(false);
         window.location = url;
-        setShoppingCart([]);
       })
       .catch((e) => {
         console.error(e);

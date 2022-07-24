@@ -11,7 +11,7 @@ import "./Product.css";
 const Product = ({ id, title, image, price, discount }) => {
   const [added, setAdded] = useState(false);
   const [addedAsFavorite, setAddedAsFavorite] = useState(false);
-  const { shoppingCart, setShoppingCart } = useContext(CartContext);
+  const { shoppingCart, setShoppingCart, notify } = useContext(CartContext);
   const { wishList, dispatch } = useContext(WishContext);
 
   const handleAddToCart = (e) => {
@@ -20,6 +20,7 @@ const Product = ({ id, title, image, price, discount }) => {
       ...shoppingCart,
       { id: id, name: title, img: image, price: discount, amount: 1 },
     ]);
+    notify("Product added to Shopping Cart");
   };
 
   const toggleWishList = () => {
@@ -28,11 +29,13 @@ const Product = ({ id, title, image, price, discount }) => {
         type: ACTIONS.REMOVE_WISH,
         payload: { id },
       });
+      notify("Product removed from the Wish List");
     } else {
       dispatch({
         type: ACTIONS.ADD_WISH,
         payload: { id, title, image, discount },
       });
+      notify("Product added to Wish List");
     }
   };
 
