@@ -20,7 +20,7 @@ const Product = ({ id, title, image, price, discount }) => {
       ...shoppingCart,
       { id: id, name: title, img: image, price: discount, amount: 1 },
     ]);
-    notify("Product added to Shopping Cart");
+    notify(`${title} added to Shopping Cart`);
   };
 
   const toggleWishList = () => {
@@ -29,13 +29,13 @@ const Product = ({ id, title, image, price, discount }) => {
         type: ACTIONS.REMOVE_WISH,
         payload: { id },
       });
-      notify("Product removed from the Wish List");
+      notify(`${title} removed from the Wish List`, "error");
     } else {
       dispatch({
         type: ACTIONS.ADD_WISH,
         payload: { id, title, image, discount },
       });
-      notify("Product added to Wish List");
+      notify(`${title} added to Wish List`);
     }
   };
 
