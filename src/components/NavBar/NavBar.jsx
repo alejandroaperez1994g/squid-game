@@ -1,26 +1,26 @@
-import { useEffect, useState, useContext } from "react";
-import Badge from "@mui/material/Badge";
-import { styled } from "@mui/material/styles";
-import IconButton from "@mui/material/IconButton";
-import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
-import { Button, Loading } from "@nextui-org/react";
-import { useNavigate } from "react-router-dom";
+import { useEffect, useState, useContext } from 'react';
+import Badge from '@mui/material/Badge';
+import { styled } from '@mui/material/styles';
+import IconButton from '@mui/material/IconButton';
+import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
+import { Button, Loading } from '@nextui-org/react';
+import { useNavigate } from 'react-router-dom';
 
-import { CartContext } from "../../contexts/CartContext";
-import { UserContext } from "../../contexts/UserContext";
-import DropdownMenu from "../DropdownMenu/DropdownMenu";
-import { ShoppingCartTable } from "../index";
-import { Link } from "react-router-dom";
+import { CartContext } from '../../contexts/CartContext';
+import { UserContext } from '../../contexts/UserContext';
+import DropdownMenu from '../DropdownMenu/DropdownMenu';
+import { ShoppingCartTable } from '../index';
+import { Link } from 'react-router-dom';
 
-import Menu from "@mui/material/Menu";
-import "./NavBar.css";
+import Menu from '@mui/material/Menu';
+import './NavBar.css';
 
 const StyledBadge = styled(Badge)(({ theme }) => ({
-  "& .MuiBadge-badge": {
+  '& .MuiBadge-badge': {
     right: -2,
     top: 3,
     border: `2px solid ${theme.palette.background.paper}`,
-    padding: "0 4px",
+    padding: '0 4px',
   },
 }));
 
@@ -57,10 +57,10 @@ const Navbar = () => {
 
   const handleCheckout = () => {
     if (!userData) {
-      notify("You must be authenticated to checkout", "error");
-      notify("You will be redirected to Login", "error");
+      notify('You must be authenticated to checkout', 'error');
+      notify('You will be redirected to Login', 'error');
       setTimeout(() => {
-        navigator("/login");
+        navigator('/login');
       }, 4000);
       return;
     }
@@ -70,12 +70,12 @@ const Navbar = () => {
     });
     setIsLoading(true);
     fetch(process.env.REACT_APP_STRIPE_SERVER_URL, {
-      method: "POST",
+      method: 'POST',
       headers: {
-        "Content-Type": "application/json",
+        'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        items,
+        shoppingCart,
       }),
     })
       .then((res) => {
@@ -103,7 +103,7 @@ const Navbar = () => {
           onClick={handleCheckout}
           disabled={enableCheckout}
         >
-          {isLoading ? <Loading type="points" color="white" /> : "Checkout"}
+          {isLoading ? <Loading type="points" color="white" /> : 'Checkout'}
         </Button>
       </div>
     );
@@ -115,7 +115,7 @@ const Navbar = () => {
         <DropdownMenu email={userData.email} photo={userData?.photo} />
       ) : (
         <button className="navbar__loginButton">
-          <Link to={"/login"}> Login </Link>
+          <Link to={'/login'}> Login </Link>
         </button>
       )}
 
@@ -154,7 +154,7 @@ const Navbar = () => {
           color="inherit"
         >
           <StyledBadge badgeContent={shoppingCart.length} color="primary">
-            <ShoppingCartIcon style={{ color: "white" }} />
+            <ShoppingCartIcon style={{ color: 'white' }} />
           </StyledBadge>
         </IconButton>
         <Menu
@@ -162,20 +162,20 @@ const Navbar = () => {
           id="menu-appbar"
           anchorEl={anchorEl}
           anchorOrigin={{
-            vertical: "top",
-            horizontal: "right",
+            vertical: 'top',
+            horizontal: 'right',
           }}
           keepMounted
           transformOrigin={{
-            vertical: "top",
-            horizontal: "right",
+            vertical: 'top',
+            horizontal: 'right',
           }}
           open={Boolean(anchorEl)}
           onClose={handleClose}
         >
           <img
             className="cart__logo"
-            src={require("../../assets/img/shopping.png")}
+            src={require('../../assets/img/shopping.png')}
             alt="shooping cart"
           />
           {shoppingCart.length > 0 ? (

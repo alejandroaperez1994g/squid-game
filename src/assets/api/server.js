@@ -18,7 +18,7 @@ app.post("/create-checkout-session", async (req, res) => {
     const session = await stripe.checkout.sessions.create({
       payment_method_types: ["card"],
       mode: "payment",
-      line_items: req.body.items.map((item) => {
+      line_items: req.body.shoppingCart.map((item) => {
         return {
           price_data: {
             currency: "eur",
