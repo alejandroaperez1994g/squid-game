@@ -27,7 +27,7 @@ const StyledBadge = styled(Badge)(({ theme }) => ({
 const Navbar = () => {
   const [anchorEl, setAnchorEl] = useState(null);
   const [total, setTotal] = useState(0);
-  const { shoppingCart, setShoppingCart, notify } = useContext(CartContext);
+  const { shoppingCart, notify } = useContext(CartContext);
   const { userData } = useContext(UserContext);
   const navigator = useNavigate();
 
@@ -65,9 +65,7 @@ const Navbar = () => {
       return;
     }
 
-    const items = shoppingCart.map((item) => {
-      return item;
-    });
+
     setIsLoading(true);
     fetch(process.env.REACT_APP_STRIPE_SERVER_URL, {
       method: 'POST',
