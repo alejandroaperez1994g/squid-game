@@ -5,6 +5,7 @@ import { Success } from "./components";
 
 import Login from "./pages/Login/Login";
 import Home from "./pages/Home/Home";
+import PageNotFound from "./pages/PageNotFound/PageNotFound";
 
 import { CartContext, UserContext, WishContext } from "./contexts";
 import { wishReducer } from "./reducers/wishReducer";
@@ -50,6 +51,7 @@ const Router = () => {
               <Route path="/" element={<Home />} />
               <Route path="/success" element={<Success />} />
               <Route path="/cancel" element={<Home />} />
+              <Route path="*" element={<PageNotFound />} />
             </Routes>
           </WishContext.Provider>
         </BrowserRouter>
