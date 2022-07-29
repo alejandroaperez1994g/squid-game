@@ -1,7 +1,11 @@
 export const fetchProducts = async () => {
-  const response = await fetch(process.env.REACT_APP_API_SERVER_URL);
-  const data = await response.json();
-  return data;
+  try {
+    const response = await fetch(process.env.REACT_APP_API_SERVER_URL);
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    return { error };
+  }
 };
 
 export const getStripeCheckout = async (shoppingCart) => {
@@ -18,6 +22,7 @@ export const getStripeCheckout = async (shoppingCart) => {
     const data = await response.json();
     return data;
   } catch (error) {
+    console.error(error);
     return error;
   }
 };

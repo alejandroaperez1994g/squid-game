@@ -21,6 +21,8 @@
   gap: 1rem;
   width: 90vw;
   margin-top: 1rem;
+  overflow-x: auto;
+  overscroll-behavior-inline: contain;
 }
 
 .catalog__products {
