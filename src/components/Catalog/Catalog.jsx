@@ -1,10 +1,10 @@
-import { useEffect, useState } from "react";
-import { fetchProducts } from "../../helper/api";
-import Product from "../Product/Product";
+import { useEffect, useState } from 'react';
+import { fetchProducts } from '../../helper/api';
+import Product from '../Product/Product';
 
-import SkeletonProduct from "../SkeletonProduct/SkeletonProduct";
+import SkeletonProduct from '../SkeletonProduct/SkeletonProduct';
 
-import "./Catalog.css";
+import './Catalog.css';
 
 const Catalog = ({ dispatch }) => {
   const [catalog, setCatalog] = useState([]);
@@ -25,7 +25,7 @@ const Catalog = ({ dispatch }) => {
     <div className="catalog__container">
       <img
         className="catalog__title"
-        src={require("../../assets/img/catalog-title.png")}
+        src={require('../../assets/img/catalog-title.png')}
         alt="title"
       />
       <div className="catalog__products">

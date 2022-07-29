@@ -14,14 +14,13 @@
 }
 
 .catalog__products {
-  display: flex;
+  display: grid;
+  grid-auto-flow: column;
   justify-content: space-between;
   align-items: center;
   gap: 1rem;
   width: 90vw;
   margin-top: 1rem;
-  overflow: hidden;
-  overflow-x: hidden;
 }
 
 .catalog__products {
