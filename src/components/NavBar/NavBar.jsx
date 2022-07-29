@@ -4,13 +4,13 @@ import { styled } from '@mui/material/styles';
 import IconButton from '@mui/material/IconButton';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import { Button, Loading } from '@nextui-org/react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 
 import { CartContext } from '../../contexts/CartContext';
 import { UserContext } from '../../contexts/UserContext';
 import DropdownMenu from '../DropdownMenu/DropdownMenu';
 import { ShoppingCartTable } from '../index';
-import { Link } from 'react-router-dom';
+import { getStripeCheckout } from '../../services/api';
 
 import Menu from '@mui/material/Menu';
 import './NavBar.css';
@@ -55,38 +55,26 @@ const Navbar = () => {
     setTotal(total);
   }, [shoppingCart]);
 
-  const handleCheckout = () => {
+  const handleCheckout = async () => {
     if (!userData) {
-      notify('You must be authenticated to checkout', 'error');
-      notify('You will be redirected to Login', 'error');
+      notify('You must be authenticated to checkout.', 'error');
+      notify('You will be redirected to Login.', 'error');
       setTimeout(() => {
         navigator('/login');
       }, 4000);
       return;
     }
 
-
     setIsLoading(true);
-    fetch(process.env.REACT_APP_STRIPE_SERVER_URL, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        shoppingCart,
-      }),
-    })
-      .then((res) => {
-        if (res.ok) return res.json();
-        return res.json().then((json) => Promise.reject(json));
-      })
-      .then(({ url }) => {
-        setIsLoading(false);
-        window.location = url;
-      })
-      .catch((e) => {
-        console.error(e);
-      });
+    const stripeResponse = await getStripeCheckout(shoppingCart);
+    if (stripeResponse.url) {
+      setIsLoading(false);
+      window.location = stripeResponse.url;
+    } else {
+      setIsLoading(false);
+      notify(`Stripe Error: ${stripeResponse.error}.`, 'error');
+      notify(`Stripe Error: please try again later.`, 'error');
+    }
   };
 
   const Total = () => {
@@ -99,7 +87,7 @@ const Navbar = () => {
           color="secondary"
           shadow
           onClick={handleCheckout}
-          disabled={enableCheckout}
+          disabled={enableCheckout || isLoading}
         >
           {isLoading ? <Loading type="points" color="white" /> : 'Checkout'}
         </Button>

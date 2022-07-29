@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { fetchProducts } from '../../helper/api';
+import { fetchProducts } from '../../services/api';
 import Product from '../Product/Product';
 
 import SkeletonProduct from '../SkeletonProduct/SkeletonProduct';
