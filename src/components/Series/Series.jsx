@@ -1,8 +1,8 @@
-import { memo } from "react";
-import AliceCarousel from "react-alice-carousel";
-import "react-alice-carousel/lib/alice-carousel.css";
-import { info } from "../../assets/js/info";
-import "./Series.css";
+import { memo } from 'react';
+import AliceCarousel from 'react-alice-carousel';
+import 'react-alice-carousel/lib/alice-carousel.css';
+import { info } from '../../assets/js/info';
+import './Series.css';
 
 const handleDragStart = (e) => e.preventDefault();
 
@@ -15,6 +15,7 @@ info[0].series.forEach((item, index) => {
       src={require(`../../assets/img/series/${item.url}`)}
       alt=""
       onDragStart={handleDragStart}
+      style={{ height: 450, borderRadius: '10px' }}
     />
   );
 });
@@ -24,7 +25,7 @@ const Series = () => {
     <div className="series__container">
       <img
         className="series__title"
-        src={require("../../assets/img/series.png")}
+        src={require('../../assets/img/series.png')}
         alt=""
       />
       <AliceCarousel
@@ -32,7 +33,7 @@ const Series = () => {
         items={items}
         controlsStrategy="alternate"
         autoPlay="true"
-        autoPlayInterval="1000"
+        autoPlayInterval="2000"
         infinite="true"
       />
     </div>

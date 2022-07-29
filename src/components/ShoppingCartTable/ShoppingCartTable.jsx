@@ -1,14 +1,14 @@
-import React, { useContext } from "react";
-import { CartContext } from "../../contexts/CartContext";
-import { WishContext } from "../../contexts/WishContext";
-import { faPlus, faMinus, faTrash } from "@fortawesome/free-solid-svg-icons";
-import { Table, Button, User } from "@nextui-org/react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import ShoppingCartCheckoutIcon from "@mui/icons-material/ShoppingCartCheckout";
-import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
+import React, { useContext } from 'react';
+import { CartContext } from '../../contexts/CartContext';
+import { WishContext } from '../../contexts/WishContext';
+import { faPlus, faMinus, faTrash } from '@fortawesome/free-solid-svg-icons';
+import { Table, Button, User } from '@nextui-org/react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import ShoppingCartCheckoutIcon from '@mui/icons-material/ShoppingCartCheckout';
+import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 
-import "./ShoppingCartTable.css";
-import { ACTIONS } from "../../reducers/wishReducer";
+import './ShoppingCartTable.css';
+import { ACTIONS } from '../../reducers/wishReducer';
 
 const ShoppingCartTable = ({ wish }) => {
   const { shoppingCart, setShoppingCart, notify } = useContext(CartContext);
@@ -55,8 +55,8 @@ const ShoppingCartTable = ({ wish }) => {
       className="cart__table"
       aria-label="Example static collection table"
       css={{
-        height: "auto",
-        minWidth: "auto",
+        height: 'auto',
+        minWidth: 'auto',
       }}
       bordered
     >
@@ -64,8 +64,8 @@ const ShoppingCartTable = ({ wish }) => {
         <Table.Header>
           <Table.Column>PRODUCT</Table.Column>
           <Table.Column>PRICE</Table.Column>
-          <Table.Column>AMOUNT</Table.Column>
-          <Table.Column>AMOUNT</Table.Column>
+          <Table.Column></Table.Column>
+          <Table.Column></Table.Column>
         </Table.Header>
       ) : (
         <Table.Header>
@@ -87,14 +87,14 @@ const ShoppingCartTable = ({ wish }) => {
                   <User
                     squared
                     src={require(`../../assets/img/products/${item?.img}`)}
-                    css={{ p: 0, height: "max-content" }}
+                    css={{ p: 0, height: 'max-content' }}
                     size="xl"
                   ></User>
                 </Table.Cell>
-                <Table.Cell css={{ textAlign: "center" }}>
+                <Table.Cell css={{ textAlign: 'center' }}>
                   € {item?.price}
                 </Table.Cell>
-                <Table.Cell css={{ textAlign: "center" }}>
+                <Table.Cell css={{ textAlign: 'center' }}>
                   <Button
                     auto
                     ghost
@@ -104,7 +104,7 @@ const ShoppingCartTable = ({ wish }) => {
                     <ShoppingCartCheckoutIcon />
                   </Button>
                 </Table.Cell>
-                <Table.Cell css={{ textAlign: "center" }}>
+                <Table.Cell css={{ textAlign: 'center' }}>
                   <Button
                     placeholder="Remove from Wish List"
                     auto
@@ -128,15 +128,15 @@ const ShoppingCartTable = ({ wish }) => {
                   <User
                     squared
                     src={require(`../../assets/img/products/${item.img}`)}
-                    css={{ p: 0, height: "max-content" }}
+                    css={{ p: 0, height: 'max-content' }}
                     name={item.name}
                     size="xl"
                   ></User>
                 </Table.Cell>
-                <Table.Cell css={{ textAlign: "center" }}>
+                <Table.Cell css={{ textAlign: 'center' }}>
                   € {item.price}
                 </Table.Cell>
-                <Table.Cell css={{ textAlign: "center" }}>
+                <Table.Cell css={{ textAlign: 'center' }}>
                   {item.amount}
                 </Table.Cell>
                 <Table.Cell>
@@ -144,12 +144,12 @@ const ShoppingCartTable = ({ wish }) => {
                     <FontAwesomeIcon icon={faPlus} />
                   </Button>
                 </Table.Cell>
-                <Table.Cell css={{ textAlign: "center" }}>
+                <Table.Cell css={{ textAlign: 'center' }}>
                   <Button auto ghost onClick={() => handleRestAmount(item.id)}>
                     <FontAwesomeIcon icon={faMinus} />
                   </Button>
                 </Table.Cell>
-                <Table.Cell css={{ textAlign: "center" }}>
+                <Table.Cell css={{ textAlign: 'center' }}>
                   <Button
                     auto
                     ghost

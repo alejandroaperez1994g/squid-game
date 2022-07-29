@@ -6,6 +6,7 @@
   color: white;
   background: linear-gradient(143.36deg, #c1a8e4 0%, #8552c9 75%);
   margin-top: 7rem;
+  border-radius: 10px;
 }
 
 .bottom__section_left {
@@ -18,7 +19,7 @@
 }
 
 .bottom__section_right {
-  background-image: url("../../assets/img/bottom-background.jpg");
+  background-image: url('../../assets/img/bottom-background.jpg');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;

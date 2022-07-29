@@ -7,22 +7,21 @@
   width: 90%;
   margin-top: -5rem;
   padding: 2rem;
-  background-image: url("../../assets/img/background-series.png");
+  background-image: url('../../assets/img/background-series.png');
   background-position: center;
   background-repeat: no-repeat;
-  background-size: cover;
 }
 .series__image {
   height: 25rem;
-  border-radius: 10px;
 }
+
 .series__title {
   margin-bottom: 2rem;
   margin-top: 15rem;
 }
 
 .alice-carousel__wrapper {
-  width: 50%;
+  width: 100%;
 }
 
 @media screen and (max-width: 768px) {
@@ -35,7 +34,7 @@
     margin-top: -15rem;
   }
   .series__image {
-    height: 20rem;
+    height: 20rem !important;
   }
 }
 
