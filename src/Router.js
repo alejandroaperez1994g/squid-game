@@ -1,7 +1,7 @@
 import { useState, useEffect, useReducer } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import toast from "react-hot-toast";
-import { Success } from "./components";
+
 
 import Login from "./pages/Login/Login";
 import Home from "./pages/Home/Home";
@@ -49,7 +49,7 @@ const Router = () => {
           <WishContext.Provider value={{ wishList, dispatch }}>
             <Routes>
               <Route path="/" element={<Home />} />
-              <Route path="/success" element={<Success />} />
+              <Route path="/success" element={<Home />} />
               <Route path="/cancel" element={<Home />} />
               <Route path="*" element={<PageNotFound />} />
             </Routes>

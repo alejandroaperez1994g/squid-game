@@ -1,9 +1,12 @@
 import { Button } from '@nextui-org/react';
-import KeyboardDoubleArrowLeftIcon from '@mui/icons-material/KeyboardDoubleArrowLeft';
 import { useNavigate } from 'react-router-dom';
+import { useState } from 'react';
+import KeyboardDoubleArrowLeftIcon from '@mui/icons-material/KeyboardDoubleArrowLeft';
+import HomeIcon from '@mui/icons-material/Home';
 import './PageNotFound.css';
 
 const PageNotFound = () => {
+  const [isShown, setIsShown] = useState(false);
   const navigator = useNavigate();
   return (
     <div className="main__container">
@@ -27,8 +30,10 @@ const PageNotFound = () => {
           className="sharp_font"
           color="secondary"
           shadow
-          icon={<KeyboardDoubleArrowLeftIcon />}
+          icon={<>{isShown ? <KeyboardDoubleArrowLeftIcon /> : <HomeIcon />}</>}
           onClick={() => navigator('/')}
+          onMouseEnter={() => setIsShown(true)}
+          onMouseLeave={() => setIsShown(false)}
         >
           Return to Home
         </Button>
