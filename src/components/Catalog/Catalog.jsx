@@ -33,6 +33,7 @@ const Catalog = ({ dispatch }) => {
 
   useEffect(() => {
     handleRequest(5);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
