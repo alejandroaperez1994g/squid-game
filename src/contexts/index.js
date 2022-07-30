@@ -1,5 +1,12 @@
-import { UserContextProvider } from './UserContext';
-import { WishContextProvider } from './WishContext';
-import { CartContextProvider } from './CartContext';
+import { UserContextProvider, UserContext } from './UserContext';
+import { WishContextProvider, WishContext } from './WishContext';
+import { CartContextProvider, CartContext } from './CartContext';
 
-export { CartContextProvider, UserContextProvider, WishContextProvider };
+export {
+  CartContextProvider,
+  UserContextProvider,
+  WishContextProvider,
+  CartContext,
+  UserContext,
+  WishContext,
+};

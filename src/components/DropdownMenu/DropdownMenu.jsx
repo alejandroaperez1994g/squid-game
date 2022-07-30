@@ -1,10 +1,13 @@
-import { Dropdown, Text, Avatar } from "@nextui-org/react";
-import { UserContext } from "../../contexts/UserContext";
-import { useContext, useState } from "react";
-import ModalMenu from "../ModalMenu/ModalMenu";
+import { Dropdown, Text, Avatar } from '@nextui-org/react';
+import { CartContext, UserContext, WishContext } from '../../contexts';
+import { useContext, useState } from 'react';
+import { ACTIONS } from '../../reducers/wishReducer';
+import ModalMenu from '../ModalMenu/ModalMenu';
 
 const DropdownMenu = ({ email, photo }) => {
-  const { setUserData } = useContext(UserContext);
+  const { userData, setUserData } = useContext(UserContext);
+  const { setShoppingCart } = useContext(CartContext);
+  const { dispatch } = useContext(WishContext);
   const [visible, setVisible] = useState(false);
   const handler = () => setVisible(true);
 
@@ -14,27 +17,42 @@ const DropdownMenu = ({ email, photo }) => {
 
   const onSignOut = () => {
     setUserData(null);
+    setShoppingCart([]);
+    dispatch({ type: ACTIONS.EMPTY_WISH });
   };
 
   return (
     <>
       <Dropdown>
         <Dropdown.Trigger>
-          <Avatar
-            size="lg"
-            as="button"
-            src={photo || "https://i.pravatar.cc/150?u=a042581f4e29026024d"}
-            referrerPolicy="no-referrer"
-            color="secondary"
-            bordered
-          />
+          {userData.photo ? (
+            <Avatar
+              size="lg"
+              as="button"
+              src={photo || 'https://i.pravatar.cc/150?u=a042581f4e29026024d'}
+              referrerPolicy="no-referrer"
+              color="#fff"
+              bordered
+              zoomed
+            />
+          ) : (
+            <Avatar
+              size="lg"
+              as="button"
+              text={userData.email.at(0).toUpperCase()}
+              referrerPolicy="no-referrer"
+              bordered
+              color="secondary"
+              textColor="white"
+            />
+          )}
         </Dropdown.Trigger>
-        <Dropdown.Menu color="secondary" css={{ width: "auto" }}>
-          <Dropdown.Item key="profile" css={{ height: "$18", width: "auto" }}>
-            <Text b color="inherit" css={{ d: "flex" }}>
+        <Dropdown.Menu color="secondary" css={{ width: 'auto' }}>
+          <Dropdown.Item key="profile" css={{ height: '$18', width: 'auto' }}>
+            <Text b color="inherit" css={{ d: 'flex' }}>
               Signed in as
             </Text>
-            <Text b color="inherit" css={{ d: "flex" }}>
+            <Text b color="inherit" css={{ d: 'flex' }}>
               {email}
             </Text>
           </Dropdown.Item>
