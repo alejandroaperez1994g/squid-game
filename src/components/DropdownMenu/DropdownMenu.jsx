@@ -3,6 +3,8 @@ import { CartContext, UserContext, WishContext } from '../../contexts';
 import { useContext, useState } from 'react';
 import { ACTIONS } from '../../reducers/wishReducer';
 import ModalMenu from '../ModalMenu/ModalMenu';
+import { auth } from '../../firebase';
+import { signOut } from 'firebase/auth';
 
 const DropdownMenu = ({ email, photo }) => {
   const { userData, setUserData } = useContext(UserContext);
@@ -16,9 +18,11 @@ const DropdownMenu = ({ email, photo }) => {
   };
 
   const onSignOut = () => {
-    setUserData(null);
-    setShoppingCart([]);
-    dispatch({ type: ACTIONS.EMPTY_WISH });
+    signOut(auth).then(() => {
+      setUserData(null);
+      setShoppingCart([]);
+      dispatch({ type: ACTIONS.EMPTY_WISH });
+    });
   };
 
   return (
