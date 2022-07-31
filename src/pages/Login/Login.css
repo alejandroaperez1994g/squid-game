@@ -5,7 +5,7 @@
   min-height: 100vh;
   background: linear-gradient(146.2deg, #ff0055 0%, #000066 100%),
     linear-gradient(316.52deg, #ff0055 0%, #000066 100%);
-  font-family: "Sharp";
+  font-family: 'Sharp';
 }
 .login__container_section {
   display: flex;
@@ -64,7 +64,10 @@
   height: 4rem;
 }
 .signUp_text {
-  align-self: center;
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
 }
 .forgotPassword {
   align-self: flex-end;
@@ -82,7 +85,7 @@
   border: 1px solid rgba(255, 255, 255, 0.18);
   border-radius: 10px;
   padding: 2rem;
-  background-image: url("../../assets/img/animated-logo.gif");
+  background-image: url('../../assets/img/animated-logo.gif');
   background-position: center;
   background-size: cover;
 }
