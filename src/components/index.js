@@ -8,8 +8,12 @@ import NavBar from './NavBar/NavBar';
 import Product from './Product/Product';
 import Series from './Series/Series';
 import ShoppingCartTable from './ShoppingCartTable/ShoppingCartTable';
+import SignInForm from './SignInForm/SignInForm';
+import SignUpForm from './SignUpForm/SignUpForm';
 
 export {
+  SignInForm,
+  SignUpForm,
   BottomSection,
   Catalog,
   FeatureItem,
