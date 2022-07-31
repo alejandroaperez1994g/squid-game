@@ -5,7 +5,7 @@ import {
   signInWithPopup,
   createUserWithEmailAndPassword,
 } from 'firebase/auth';
-import { auth, provider } from '../firebase';
+import { auth, githubProvider, provider } from '../firebase';
 import { UserContext, CartContext } from '../contexts';
 
 const useAuth = () => {
@@ -36,6 +36,16 @@ const useAuth = () => {
     console.error(error.code);
     console.error(error.message);
     notify(`${error.message}`, 'error');
+  };
+
+  const handleSignUpWithGithub = () => {
+    signInWithPopup(auth, githubProvider)
+      .then((result) => {
+        setUserInformation(result);
+      })
+      .catch((error) => {
+        errorHandler(error);
+      });
   };
 
   const handleSignUpWithEmailAndPassword = () => {
@@ -79,6 +89,7 @@ const useAuth = () => {
     handleSignInWithPopup,
     handleSignUpWithEmailAndPassword,
     resetSignInForm,
+    handleSignUpWithGithub,
     email,
     setEmail,
     password,

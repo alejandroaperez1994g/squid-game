@@ -10,8 +10,10 @@ import Series from './Series/Series';
 import ShoppingCartTable from './ShoppingCartTable/ShoppingCartTable';
 import SignInForm from './SignInForm/SignInForm';
 import SignUpForm from './SignUpForm/SignUpForm';
+import SignInButton from './SignInButton/SignInButton';
 
 export {
+  SignInButton,
   SignInForm,
   SignUpForm,
   BottomSection,

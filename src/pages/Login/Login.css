@@ -89,6 +89,11 @@
   background-position: center;
   background-size: cover;
 }
+.buttons__container {
+  display: flex;
+  width: 100%;
+  gap: 0.5rem;
+}
 
 @media screen and (min-width: 568px) {
   .login__container_section {

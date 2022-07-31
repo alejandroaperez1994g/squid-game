@@ -1,13 +1,15 @@
 import { Toaster } from 'react-hot-toast';
-import { Button } from '@nextui-org/react';
+import { Button, Text } from '@nextui-org/react';
 
 import { useToggle, useAuth } from '../../hooks';
-import { SignInForm, SignUpForm } from '../../components';
+import { SignInForm, SignUpForm, SignInButton } from '../../components';
+import GoogleLogo from '../../assets/img/google.png';
+import GitHubLogo from '../../assets/img/github-logo.png';
 import './Login.css';
 
 const Login = () => {
   const siRegistering = useToggle();
-  const { handleSignInWithPopup } = useAuth();
+  const { handleSignInWithPopup, handleSignUpWithGithub } = useAuth();
 
   return (
     <div className="login__container">
@@ -26,25 +28,25 @@ const Login = () => {
               Welcome back! Please enter your details.
             </p>
             {siRegistering.state ? <SignUpForm /> : <SignInForm />}
-            <Button
-              ghost
-              icon={
-                <img
-                  className="google_icon"
-                  src={require('../../assets/img/google.png')}
-                  alt="google"
-                />
-              }
-              css={{
-                width: '100%',
-                background: 'white',
-                color: 'black',
-                border: '1px solid gray',
-              }}
-              onClick={handleSignInWithPopup}
+            <Text
+              weight="extrabold"
+              css={{ textAlign: 'center', width: '100%' }}
             >
-              Sign in with Google
-            </Button>
+              -- Or Sign In with --
+            </Text>
+            <div className="buttons__container">
+              <SignInButton
+                text={'GitHub'}
+                action={handleSignUpWithGithub}
+                icon={GitHubLogo}
+              />
+              <SignInButton
+                text={'Google'}
+                action={handleSignInWithPopup}
+                icon={GoogleLogo}
+              />
+            </div>
+
             <p className="signUp_text">
               Don't have an account?
               <Button
