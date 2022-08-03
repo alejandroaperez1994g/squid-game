@@ -71,10 +71,11 @@
 }
 .forgotPassword {
   align-self: flex-end;
+  margin: -1rem 0;
+  font-size: small;
 }
 .right_section {
   display: none;
-
   height: 90%;
   width: 90%;
   flex: 1;
