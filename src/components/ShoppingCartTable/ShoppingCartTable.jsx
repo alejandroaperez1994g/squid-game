@@ -86,7 +86,7 @@ const ShoppingCartTable = ({ wish }) => {
                 <Table.Cell>
                   <User
                     squared
-                    src={require(`../../assets/img/products/${item?.img}`)}
+                    src={`${item?.img}`}
                     css={{ p: 0, height: 'max-content' }}
                     size="xl"
                   ></User>
@@ -127,7 +127,7 @@ const ShoppingCartTable = ({ wish }) => {
                 <Table.Cell>
                   <User
                     squared
-                    src={require(`../../assets/img/products/${item.img}`)}
+                    src={`${item?.img}`}
                     css={{ p: 0, height: 'max-content' }}
                     name={item.name}
                     size="xl"

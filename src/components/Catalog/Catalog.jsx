@@ -14,12 +14,11 @@ const Catalog = ({ dispatch }) => {
   const handleRequest = async (retries) => {
     const response = await fetchProducts();
 
-    if (response.length > 1) {
-      setCatalog(response);
+    if (response.catalog.length > 1) {
+      setCatalog(response.catalog);
       setIsLoading(false);
     } else {
       if (retries > 0) {
-        console.log(`retries ${retries}`);
         setTimeout(() => {
           handleRequest(retries - 1);
         }, 10000);

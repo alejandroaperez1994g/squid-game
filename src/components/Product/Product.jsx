@@ -1,12 +1,12 @@
-import { useEffect, useState, useContext } from "react";
-import PropTypes from "prop-types";
-import { CartContext } from "../../contexts/CartContext";
-import { WishContext } from "../../contexts/WishContext";
-import FavoriteIcon from "@mui/icons-material/Favorite";
-import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
-import { ACTIONS } from "../../reducers/wishReducer";
+import { useEffect, useState, useContext } from 'react';
+import PropTypes from 'prop-types';
+import { CartContext } from '../../contexts/CartContext';
+import { WishContext } from '../../contexts/WishContext';
+import FavoriteIcon from '@mui/icons-material/Favorite';
+import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
+import { ACTIONS } from '../../reducers/wishReducer';
 
-import "./Product.css";
+import './Product.css';
 
 const Product = ({ id, title, image, price, discount }) => {
   const [added, setAdded] = useState(false);
@@ -29,7 +29,7 @@ const Product = ({ id, title, image, price, discount }) => {
         type: ACTIONS.REMOVE_WISH,
         payload: { id },
       });
-      notify(`${title} removed from the Wish List`, "error");
+      notify(`${title} removed from the Wish List`, 'error');
     } else {
       dispatch({
         type: ACTIONS.ADD_WISH,
@@ -67,11 +67,7 @@ const Product = ({ id, title, image, price, discount }) => {
         <button className="product__image_info" onClick={toggleWishList}>
           {addedAsFavorite ? <FavoriteIcon /> : <FavoriteBorderIcon />}
         </button>
-        <img
-          className="product__image_pict"
-          src={require(`../../assets/img/products/${image}`)}
-          alt=""
-        />
+        <img className="product__image_pict" src={`${image}`} alt="" />
       </div>
       <p className="product__title sharp_font">{title}</p>
       {added ? (
@@ -105,8 +101,8 @@ Product.propTypes = {
 };
 
 Product.defaultProps = {
-  title: "",
-  image: "",
+  title: '',
+  image: '',
   price: 0,
   discount: 0,
 };

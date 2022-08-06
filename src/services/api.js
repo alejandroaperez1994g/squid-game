@@ -8,6 +8,7 @@ export const fetchProducts = async () => {
   }
 };
 
+
 export const getStripeCheckout = async (shoppingCart) => {
   try {
     const response = await fetch(process.env.REACT_APP_STRIPE_SERVER_URL, {
