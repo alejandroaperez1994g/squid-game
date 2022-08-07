@@ -1,5 +1,11 @@
 import { initializeApp } from 'firebase/app';
-import { getAuth, GoogleAuthProvider, GithubAuthProvider } from 'firebase/auth';
+import {
+  getAuth,
+  GoogleAuthProvider,
+  GithubAuthProvider,
+  onAuthStateChanged,
+} from 'firebase/auth';
+import { getFirestore } from 'firebase/firestore';
 
 const app = initializeApp({
   apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
@@ -12,6 +18,15 @@ const app = initializeApp({
 
 export default app;
 export const auth = getAuth(app);
+export const db = getFirestore(app);
+
+onAuthStateChanged(auth, (user) => {
+  if (user) {
+    console.log('user logged in');
+  } else {
+    console.log('user logged out');
+  }
+});
 
 export const provider = new GoogleAuthProvider();
 export const githubProvider = new GithubAuthProvider();
