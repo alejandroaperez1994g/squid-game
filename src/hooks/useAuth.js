@@ -6,12 +6,14 @@ import {
   createUserWithEmailAndPassword,
 } from 'firebase/auth';
 import { auth, githubProvider, provider } from '../firebase';
-import { UserContext, CartContext } from '../contexts';
+import { CartContext } from '../contexts';
+import useFirestore from './useFirestore';
 
 const useAuth = () => {
   const navigator = useNavigate();
-  const { setUserData } = useContext(UserContext);
+
   const { notify } = useContext(CartContext);
+  const { settingUpData } = useFirestore();
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -27,8 +29,7 @@ const useAuth = () => {
   };
 
   const setUserInformation = (user) => {
-    const { displayName, email, photoURL } = user.user;
-    setUserData({ name: displayName, email: email, photo: photoURL });
+    settingUpData(user.user);
     navigator('/');
   };
 
