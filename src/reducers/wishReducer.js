@@ -21,7 +21,10 @@ export const wishReducer = (wishList, action) => {
     case ACTIONS.EMPTY_WISH:
       return [];
     case ACTIONS.SET_WISH_LIST:
-      return [...action.payload];
+      if (action.payload) {
+        return [...action.payload];
+      }
+      break;
     default:
       return wishList;
   }

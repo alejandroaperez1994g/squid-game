@@ -35,7 +35,7 @@ export const WishContextProvider = ({ children }) => {
       uploadWishList(userData.email, wishList);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [userData.email, wishList]);
+  }, [userData?.email, wishList]);
 
   return (
     <WishContext.Provider value={{ wishList, dispatch }}>
