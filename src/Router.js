@@ -4,11 +4,11 @@ import Login from './pages/Login/Login';
 import Home from './pages/Home/Home';
 import PageNotFound from './pages/PageNotFound/PageNotFound';
 
-import { CartContextProvider } from './contexts';
+import { UserContextProvider } from './contexts';
 
 const Router = () => {
   return (
-    <CartContextProvider>
+    <UserContextProvider>
       <BrowserRouter>
         <Routes>
           <Route path="/login" element={<Login />} />
@@ -19,7 +19,7 @@ const Router = () => {
           <Route path="*" element={<PageNotFound />} />
         </Routes>
       </BrowserRouter>
-    </CartContextProvider>
+    </UserContextProvider>
   );
 };
 

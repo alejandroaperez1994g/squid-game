@@ -1,6 +1,6 @@
 import { createContext, useEffect, useReducer, useContext } from 'react';
 import { updateDoc, doc } from 'firebase/firestore';
-import { db, auth } from '../firebase';
+import { db } from '../firebase';
 import { wishReducer } from '../reducers/wishReducer';
 import { UserContext } from './UserContext';
 
@@ -21,17 +21,9 @@ export const WishContextProvider = ({ children }) => {
     }
   };
 
-  const checkUser = () => {
-    if (userData) {
-      return true;
-    } else {
-      return false;
-    }
-  };
-
   useEffect(() => {
     localStorage.setItem('wishList', JSON.stringify(wishList));
-    if (checkUser()) {
+    if (userData) {
       uploadWishList(userData.email, wishList);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
